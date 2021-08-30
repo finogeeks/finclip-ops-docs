@@ -37,7 +37,7 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: '文档',
           items: [
             {
               label: '运维文档',
@@ -46,7 +46,7 @@ module.exports = {
           ],
         },
         {
-          title: 'Community',
+          title: '社区',
           items: [
             {
               label: 'GitHub',
@@ -63,7 +63,7 @@ module.exports = {
           ],
         },
         {
-          title: 'More',
+          title: '更多',
           items: [
             {
               label: '博客',

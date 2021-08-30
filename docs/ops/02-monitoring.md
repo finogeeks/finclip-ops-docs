@@ -20,3 +20,8 @@ author: xulishan@finogeeks.com
 
 
 ![monitor](/img/monitor.png)
+
+### 监控面板
+
+
+![grafana](/img/grafana.png)

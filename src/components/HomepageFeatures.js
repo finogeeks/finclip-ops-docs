@@ -4,32 +4,29 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+    title: '敏捷开发',
+    Svg: require('../../static/img/undraw_Active_support_re_b7sj.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        利用小程序技术将业务功能碎片化，将APP化繁为简，实现敏捷迭代
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+    title: '多端引流',
+    Svg: require('../../static/img/undraw_Online_posts_re_7ucl.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        FinClip小程序兼容主流小程序语法，实现一处开发，多处上架，打通社交平台连接
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    title: '生态构建',
+    Svg: require('../../static/img/undraw_Sync_re_492g.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        FinClip可让合作伙伴将自己的小程序入驻到自己的APP中，打造超级APP生态
       </>
     ),
   },
