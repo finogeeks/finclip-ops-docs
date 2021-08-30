@@ -3,19 +3,19 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  url: 'https://your-docusaurus-test-site.com',
+  title: 'FinClip 运维文档',
+  tagline: '稳定、可靠、可扩展的私有化小程序平台',
+  url: 'https://docs.finclip.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'finogeeks', // Usually your GitHub org/user name.
+  projectName: 'docs', // Usually your repo name.
   themeConfig: {
     navbar: {
       logo: {
-        alt: 'My Site Logo',
+        alt: '凡泰极客 - FinClip',
         src: 'img/logo.png',
       },
       items: [
@@ -27,7 +27,7 @@ module.exports = {
         },
         {to: '/blog', label: '博客', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/finogeeks/finclip-docs',
           label: 'GitHub',
           position: 'right',
         },
@@ -40,8 +40,8 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: '运维文档',
+              to: '/docs/introduction',
             },
           ],
         },
@@ -49,16 +49,16 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'GitHub',
+              href: 'https://github.com/finogeeks',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: '开发者社区',
+              href: 'https://developer.finogeeks.com/',
             },
             {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: '小程序生态圈',
+              href: 'https://finclip.com/#/ecosystem',
             },
           ],
         },
@@ -66,17 +66,17 @@ module.exports = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
+              label: '博客',
               to: '/blog',
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/finogeeks',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} FinoGeeks, Inc.`,
     },
     prism: {
       theme: lightCodeTheme,
@@ -91,13 +91,13 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
 //          editUrl:
-//            'https://github.com/facebook/docusaurus/edit/master/website/',
+//            'https://github.com/finogeeks/finclip-docs/docs',
          },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+            'https://github.com/finogeeks/finclip-docs/blog',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
