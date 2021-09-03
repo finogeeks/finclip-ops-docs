@@ -5,13 +5,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 module.exports = {
   title: 'FinClip 运维文档',
   tagline: '稳定、可靠、可扩展的私有化小程序平台',
-  url: 'https://docs.finclip.com',
+  url: 'https://devops.finclip.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'finogeeks', // Usually your GitHub org/user name.
-  projectName: 'docs', // Usually your repo name.
+  organizationName: 'finogeeks',
+  projectName: 'finclip-docs',
   themeConfig: {
     navbar: {
       logo: {
