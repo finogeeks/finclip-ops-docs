@@ -27,7 +27,7 @@ module.exports = {
         },
         {to: '/blog', label: '博客', position: 'left'},
         {
-          href: 'https://github.com/finogeeks/finclip-docs',
+          href: 'https://github.com/finogeeks/finclip-ops-docs',
           label: 'GitHub',
           position: 'right',
         },
@@ -91,13 +91,13 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
 //          editUrl:
-//            'https://github.com/finogeeks/finclip-docs/docs',
+//            'https://github.com/finogeeks/finclip-ops-docs/docs',
          },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/finogeeks/finclip-docs/blog',
+            'https://github.com/finogeeks/finclip-ops-docs/blog',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
