@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://docs.finclip.com/blog</id>
+    <id>https://devops.finclip.com/blog</id>
     <title>FinClip 运维文档 Blog</title>
     <updated>2021-08-30T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://docs.finclip.com/blog"/>
+    <link rel="alternate" href="https://devops.finclip.com/blog"/>
     <subtitle>FinClip 运维文档 Blog</subtitle>
-    <icon>https://docs.finclip.com/img/favicon.ico</icon>
+    <icon>https://devops.finclip.com/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[frp实现内网穿透]]></title>
         <id>frp</id>
-        <link href="https://docs.finclip.com/blog/frp"/>
+        <link href="https://devops.finclip.com/blog/frp"/>
         <updated>2021-08-30T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[项目地址：]]></summary>
         <author>
