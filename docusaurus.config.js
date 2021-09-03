@@ -11,7 +11,7 @@ module.exports = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'finogeeks',
-  projectName: 'finclip-docs',
+  projectName: 'finclip-ops-docs',
   themeConfig: {
     navbar: {
       logo: {
