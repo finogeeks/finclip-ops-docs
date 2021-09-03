@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfinclip_ops_docs=self.webpackChunkfinclip_ops_docs||[]).push([[200],{1415:function(s){s.exports=JSON.parse('{"allTagsPath":"/finclip-docs/blog/tags","slug":"/finclip-docs/blog/tags/ops","name":"ops","count":1,"permalink":"/finclip-docs/blog/tags/ops"}')}}]);
