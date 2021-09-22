@@ -8,7 +8,7 @@ https://devops.finclip.com/
 
 ## 安装
 
-&emsp;本文档项目采用[Docusaurus 2](https://docusaurus.io/)构建，仓库已配置GitHub Actions，当你提交内容到本仓库之后，可以直接访问 https://devops.finclip.com/ 查看新的内容。
+&emsp;仓库已配置GitHub Actions，当你提交内容到本仓库之后，可以直接访问 https://devops.finclip.com/ 查看新的内容。
 
 &emsp;当然，你也可以在自己的电脑中运行此文档网站，通过以下命令可以进行安装，需要依赖Node运行环境：
 
