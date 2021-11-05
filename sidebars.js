@@ -18,7 +18,6 @@ module.exports = {
     'introduction',
     'requirements',
     'finclip-ops-architecture',
-    'deploy',
 		'servicelist',
     {
       type: 'category',
