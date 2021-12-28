@@ -39,6 +39,9 @@ module.exports = {
         {
           title: '文档',
           items: [
+            { label: '产品文档',
+              href: 'https://www.finclip.com/mop/document/',
+            },
             {
               label: '运维文档',
               to: '/docs/introduction',
@@ -46,19 +49,19 @@ module.exports = {
           ],
         },
         {
-          title: '社区',
+          title: '开发资源',
           items: [
+            { 
+              label: '资源下载中心',
+              href: 'https://www.finclip.com/downloads'
+            },
+            {
+              label: '小程序应用市场',
+              href: 'https://www.finclip.com/market',
+            },
             {
               label: 'GitHub',
               href: 'https://github.com/finogeeks',
-            },
-            {
-              label: '开发者社区',
-              href: 'https://developer.finogeeks.com/',
-            },
-            {
-              label: '小程序生态圈',
-              href: 'https://finclip.com/#/ecosystem',
             },
           ],
         },
@@ -66,12 +69,16 @@ module.exports = {
           title: '更多',
           items: [
             {
-              label: '博客',
+              label: 'FinClip官网',
+              href: 'https://www.finclip.com/',
+            },
+            {
+              label: '运维博客',
               to: '/blog',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/finogeeks',
+              label: '产品博客',
+              href: 'https://www.finclip.com/blog/',
             },
           ],
         },
