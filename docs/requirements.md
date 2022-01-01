@@ -80,18 +80,18 @@ title: 部署要求
 #### 基建
 若您决定自行提供部分基建服务，请确保版本不低于该要求
 
-| 服务          | 版本          |
-| ------------- | ------------- |
-| Docker CE     | 19.03         |
-| Kubernetes    | 1.18.14       |
-| Rancher       | 2.4.8         |
-| Zookeeper     | 3.4.14        |
-| Kafka         | 2.3.1         |
-| MongoDB       | 4.2.11-bionic |
-| Redis         | 6.0.9-buster  |
-| ElasticSearch | 6.8.13        |
-| Consul        | 1.9.1         |
-| MinIO         | 2021-01-08    |
+| 服务          | 版本          | 授权协议                    |
+| ------------- | ------------- | -------------------------- | 
+| Docker CE     | 19.03         | 免费                       |
+| Kubernetes    | 1.18.14       | 免费                       |
+| Rancher       | 2.4.8         | 免费                       |
+| Zookeeper     | 3.4.14        | Apache License 2.0         |
+| Kafka         | 2.3.1         | Apache License 2.0         |
+| MongoDB       | 4.2.11-bionic | SSPL                       |
+| Redis         | 6.0.9-buster  | BSD                        |
+| ElasticSearch | 6.8.13        | Apache License 2.0         |
+| Consul        | 1.9.1         | Mozilla Public License 1.1 |
+| MinIO         | 2021-01-08    | GNU Affero GPL             |
 
 ----
 
