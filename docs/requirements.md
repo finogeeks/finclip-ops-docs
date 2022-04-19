@@ -96,7 +96,7 @@ title: 部署要求
 | Rancher       | 2.4.8         | Apache License 2.0        |
 | Zookeeper     | 3.4.14        | Apache License 2.0         |
 | Kafka         | 2.3.1         | Apache License 2.0         |
-| MySQL   | 8.0.28 | GPL                     |
+| MySQL   | 8.0.27 | GPL                     |
 | Redis         | 6.0.9-buster  | BSD                        |
 | ElasticSearch | 6.8.13        | Apache License 2.0         |
 | Consul        | 1.9.1         | Mozilla Public License 1.1 |
@@ -132,7 +132,7 @@ title: 部署要求
 
   | 端口 | 用途                   | 协议 |
   | ---- | ---------------------- | ---- |
-  | 9216 | MySQL Exporter         | TCP  |
+  | 9104 | MySQL Exporter         | TCP  |
   | 7200 | Redis Exporter         | TCP  |
   | 7201 | Redis Exporter         | TCP  |
   | 9308 | Kafka Exporter         | TCP  |
@@ -141,10 +141,10 @@ title: 部署要求
 
 * 以及用于 Rancher 组件通信的所需端口：
 
-  | 端口  | 用途          | 协议    |
-  | ----- | ------------- | ------- |
-  | 2379  | Docker Socket | TCP     |
-  | 2380  | Docker Socket | TCP     |
-  | 6443  | ETCD          | TCP     |
-  | 10250 | Rancher       | TCP     |
-  | 8472  | Flannal CNI   | **UDP** |
+  | 端口  | 用途        | 协议    |
+  | ----- | ----------- | ------- |
+  | 2379  | ETCD        | TCP     |
+  | 2380  | ETCD        | TCP     |
+  | 6443  | API Server  | TCP     |
+  | 10250 | Rancher     | TCP     |
+  | 8472  | Flannal CNI | **UDP** |
