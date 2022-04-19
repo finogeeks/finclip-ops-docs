@@ -91,12 +91,12 @@ title: 部署要求
 
 | 服务          | 版本          | 授权协议                    |
 | ------------- | ------------- | -------------------------- |
-| Docker CE     | 19.03         | 免费                       |
-| Kubernetes    | 1.18.14       | 免费                       |
-| Rancher       | 2.4.8         | 免费                       |
+| Docker CE     | 19.03         | Apache License 2.0        |
+| Kubernetes    | 1.18.14       | Apache License 2.0        |
+| Rancher       | 2.4.8         | Apache License 2.0        |
 | Zookeeper     | 3.4.14        | Apache License 2.0         |
 | Kafka         | 2.3.1         | Apache License 2.0         |
-| MySQL   | 7.0.28 | GPL                     |
+| MySQL   | 8.0.28 | GPL                     |
 | Redis         | 6.0.9-buster  | BSD                        |
 | ElasticSearch | 6.8.13        | Apache License 2.0         |
 | Consul        | 1.9.1         | Mozilla Public License 1.1 |
