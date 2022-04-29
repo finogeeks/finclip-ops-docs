@@ -29,7 +29,7 @@ POC 将采用 Docker-Compose 的方式部署，所需的配置可以参考下表
 
 | CPU  | 内存 | 储存空间 | 服务            |
 | ---- | ---- | -------- | --------------- |
-| 4 核 | 8 GB | 200 GB   | [业务¹](#explain1)、[基建²](#explain2) 混合部署 |
+| 4 核 | 8 GB | 200 GB   | [[业务¹]](#explain1)、[[基建²]](#explain2) 混合部署 |
 
 该配置档的服务器所能承载的 [极限³](#explain3)  指标参见下表▼：
 
@@ -56,10 +56,10 @@ POC 将采用 Docker-Compose 的方式部署，所需的配置可以参考下表
 
 | CPU  | 内存  | 储存空间 | 服务                                            |
 | ---- | ----- | -------- | ----------------------------------------------- |
-| 8 核 | 16 GB | 200 GB   | [业务¹](#explain1)、[基建²](#explain2) 混合部署 |
-| 8 核 | 16 GB | 200 GB   | [业务¹](#explain1)、[基建²](#explain2) 混合部署 |
-| 8 核 | 16 GB | 200 GB   | [业务¹](#explain1)、[基建²](#explain2) 混合部署 |
-| 8 核 | 16 GB | 200 GB   | [业务¹](#explain1)、[基建²](#explain2) 混合部署 |
+| 8 核 | 16 GB | 200 GB   | [[业务¹]](#explain1)、[[基建²]](#explain2) 混合部署 |
+| 8 核 | 16 GB | 200 GB   | [[业务¹]](#explain1)、[[基建²]](#explain2) 混合部署 |
+| 8 核 | 16 GB | 200 GB   | [[业务¹]](#explain1)、[[基建²]](#explain2) 混合部署 |
+| 8 核 | 16 GB | 200 GB   | [[业务¹]](#explain1)、[[基建²]](#explain2) 混合部署 |
 
 该配置档的服务器所能承载的 [极限³](#explain3)  指标参见下表▼：
 
@@ -88,13 +88,13 @@ POC 将采用 Docker-Compose 的方式部署，所需的配置可以参考下表
 
 | CPU  | 内存  | 储存空间 | 用途                            | 数量 | 角色              |
 | ----- | ----- | -------- | ------------------------------- | ---- | ----------------- |
-| 8 核  | 16 GB | 300 GB   | **[业务¹](#explain1)：**微服务容器 | 3    | Kubernetes Worker |
-| 8 核 | 16 GB | 500 GB   | **[基建²](#explain2)：** 中间件 | 4    | 中间件独占        |
-| 4 核  | 4 GB | 300 GB   | **[基建²](#explain2)：** 附加组件 | 1    | 附加组件独占      |
-| 4 核  | 4 GB  | 100 GB   | **[业务¹](#explain1)：** 微服务网关容器 | 1   | Kubernetes Worker |
+| 8 核  | 16 GB | 300 GB   | [[业务¹]](#explain1)：微服务容器 | 3    | Kubernetes Worker |
+| 8 核 | 16 GB | 500 GB   | [[基建²]](#explain2)： 中间件 | 4    | 中间件独占        |
+| 4 核  | 4 GB | 300 GB   | [[基建²]](#explain2)： 附加组件 | 1    | 附加组件独占      |
+| 4 核  | 4 GB  | 100 GB   | [[业务¹]](#explain1)：微服务网关容器 | 1   | Kubernetes Worker |
 | —— | —— | ——— | ▼ ————  [选配服务](#explain7)  ———— ▼ | —— | ————————— |
-| 4 核  | 4 GB  | 100 GB | **[选配](#explain7)：** Rancher 管理面板、网关 | 1   | Kubernetes Master |
-| 8 核 | 16 GB | 500 GB | **[选配](#explain7)：** 日志系统、监控系统 | 1 | Kubernetes Worker |
+| 4 核  | 4 GB  | 100 GB |[[选配]](#explain7)： Rancher 管理面板、网关 | 1   | Kubernetes Master |
+| 8 核 | 16 GB | 500 GB | [[选配]](#explain7)： 日志系统、监控系统 | 1 | Kubernetes Worker |
 
 该配置档的服务器所能承载的 [极限³](#explain3)  指标参见下表▼：
 
@@ -111,19 +111,19 @@ POC 将采用 Docker-Compose 的方式部署，所需的配置可以参考下表
 
 #### 名词说明：
 
-<a id="explain1"></a>**[业务]¹：**指 FinClip 微服务及相关联服务；
+<a id="explain1"></a>**[业务]¹：** 指 FinClip 微服务及相关联服务；
 
-<a id="explain2"></a>**[基建]²：** 指[中间件*](#explain4)、[附加组件**](#explain5) 、[Kubernetes 组件\*\*\*](#explain6)等；
+<a id="explain2"></a>**[基建]²：** 指[中间件](#explain4)、[附加组件](#explain5) 、[Kubernetes 组件](#explain6)等；
 
-<a id="explain3"></a>**[极限]³：**指 TPS 压力高于该值，会因负载压力过大，引起集群或服务器崩溃；
+<a id="explain3"></a>**[极限]³：** 指 TPS 压力高于该值，会因负载压力过大，引起集群或服务器崩溃；
 
-<a id="explain7"></a>**[选配]：**考虑到此类服务需要更多的独占服务器资源，因此默认情况下不进行部署，除非与客户有另行约定；
+<a id="explain7"></a>**[选配]：** 考虑到此类服务需要更多的独占服务器资源，因此默认情况下不进行部署，除非与客户有另行约定；
 
-<a id="explain4"></a>**中间件\*：**MinIO、Kafka、Redis、ElasticSearch、Consul、Zookeeper、MySQL；
+<a id="explain4"></a>**中间件：** MinIO、Kafka、Redis、ElasticSearch、Consul、Zookeeper、MySQL；
 
-<a id="explain5"></a>**附加组件\*\*：**Registry、Tinygit;
+<a id="explain5"></a>**附加组件：** Registry、Tinygit;
 
-<a id="explain6"></a>**Kubernetes 组件\*\*\*：**Rancher Master 管理面板、Rancher Worker 组件；
+<a id="explain6"></a>**Kubernetes 组件：** Rancher Master 管理面板、Rancher Worker 组件；
 
 
 
