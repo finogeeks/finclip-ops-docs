@@ -111,19 +111,19 @@ POC 将采用 Docker-Compose 的方式部署，所需的配置可以参考下表
 
 #### 名词说明：
 
-<a id="explain1"></a> **[业务]¹：** 指 FinClip 微服务及相关联服务；<p>
+<a id="explain1"></a> [业务]¹： 指 FinClip 微服务及相关联服务；<p>
 
-<a id="explain2"></a> **[基建]²：** 指[中间件](#explain4)、[附加组件](#explain5) 、[Kubernetes 组件](#explain6)等；<p>
+<a id="explain2"></a> [基建]²： 指[中间件](#explain4)、[附加组件](#explain5) 、[Kubernetes 组件](#explain6)等；<p>
 
-<a id="explain3"></a> **[极限]³：** 指 TPS 压力高于该值，会因负载压力过大，引起集群或服务器崩溃；<p>
+<a id="explain3"></a> [极限]³： 指 TPS 压力高于该值，会因负载压力过大，引起集群或服务器崩溃；<p>
 
-<a id="explain7"></a> **[选配]：** 考虑到此类服务需要更多的独占服务器资源，因此默认情况下不进行部署，除非与客户有另行约定；<p>
+<a id="explain7"></a> [选配]： 考虑到此类服务需要更多的独占服务器资源，因此默认情况下不进行部署，除非与客户有另行约定；<p>
 
-<a id="explain4"></a> **中间件：** MinIO、Kafka、Redis、ElasticSearch、Consul、Zookeeper、MySQL；<p>
+<a id="explain4"></a> 中间件： MinIO、Kafka、Redis、ElasticSearch、Consul、Zookeeper、MySQL；<p>
 
-<a id="explain5"></a> **附加组件：** Registry、Tinygit；<p>
+<a id="explain5"></a> 附加组件： Registry、Tinygit；<p>
 
-<a id="explain6"></a> **Kubernetes 组件：** Rancher Master 管理面板、Rancher Worker 组件。<p>
+<a id="explain6"></a> Kubernetes 组件： Rancher Master 管理面板、Rancher Worker 组件。<p>
 
 
 ----
