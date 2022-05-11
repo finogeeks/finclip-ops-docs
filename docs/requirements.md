@@ -111,14 +111,13 @@ title: 部署要求
 
 #### 名词说明：
 
-
-<a id="explain1"></a> **[业务¹]：** 指 FinClip 微服务及相关联服务；<p></p>
-<a id="explain2"></a> **[基建²]：** 指中间件、附加组件、Kubernetes 组件等；<p></p>
-<a id="explain3"></a> **[极限³]：** 指 TPS 压力高于该值，会因负载压力过大，引起集群或服务器崩溃；<p></p>
-<a id="explain7"></a> **[选配]：** 考虑到此类服务需要更多的独占服务器资源，因此默认情况下不进行部署，除非与客户有另行约定；<p></p>
-<a id="explain4"></a> **中间件：** MinIO、Kafka、Redis、ElasticSearch、Consul、Zookeeper、MySQL；<p></p>
-<a id="explain5"></a> **附加组件：** Registry、Tinygit；<p></p>
-<a id="explain6"></a> **Kubernetes 组件：** Rancher Master 管理面板、Rancher Worker 组件。<p></p>
+<a id="explain1"></a> [业务¹]： 指 FinClip 微服务及相关联服务；<p></p>
+<a id="explain2"></a> [基建²]： 指中间件、附加组件、Kubernetes 组件等；<p></p>
+<a id="explain3"></a> [极限³]： 指 TPS 压力高于该值，会因负载压力过大，引起集群或服务器崩溃；<p></p>
+<a id="explain7"></a> [选配]： 考虑到此类服务需要更多的独占服务器资源，因此默认情况下不进行部署，除非与客户有另行约定；<p></p>
+<a id="explain4"></a> 中间件： MinIO、Kafka、Redis、ElasticSearch、Consul、Zookeeper、MySQL；<p></p>
+<a id="explain5"></a> 附加组件： Registry、Tinygit；<p></p>
+<a id="explain6"></a> Kubernetes 组件： Rancher Master 管理面板、Rancher Worker 组件。<p></p>
 
 
 ----
