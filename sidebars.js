@@ -18,7 +18,8 @@ module.exports = {
     'introduction',
     'requirements',
     'finclip-ops-architecture',
-		'servicelist',
+    'servicelist',
+    'poclist',
     {
       type: 'category',
       label: "基础设施",
