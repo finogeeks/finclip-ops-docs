@@ -41,16 +41,6 @@ author: xulishan@finogeeks.com
 
 &emsp;在生产部署中，我们采用多节点部署Kafka集群。Kafka利用Zookeeper进行节点选举和管理。在服务内部，Kafka数据根据不同的Topic进行区分，Topic由多个partition组成，这些partition可以设置多个数据副本，这些数据副本保存在不同的机器节点上，当集群内有服务器发生故障时，集群访问将自动切换到相应的副本所在服务器上，从而实现集群服务的高可用性。
 
-### 行为数据存储（ElasticSearch）
-
-&emsp;FinClip 采用 ElasticSearch 进行存储、检索和分析用户行为数据。Elasticsearch 是一种分布式 RESTful 搜索和分析引擎，能够处理越来越多的用例。作为 Elastic Stack 的核心，它集中存储数据，以实现闪电般的快速搜索、微调相关性和可轻松扩展的强大分析。
-
-![es-cluster](/img/es-cluster.png)
-
-&emsp;ElasticSearch 的主旨是随时可用和按需扩容。 而扩容可以通过购买性能更强大（ 垂直扩容 ，或 纵向扩容 ） 或者数量更多的服务器（ 水平扩容 ，或 横向扩容 ）来实现。
-
-&emsp;在生产环境中，我们采用多节点部署ElasticSearch集群，并设置相应的副本分片，使得数据可以同时存储在多个分散的服务器之上。当数据主分片所在的服务器发生故障时，副分片所在的服务器将继续提供集群服务，从而保证服务的可扩展性和可用性。
-
 ### FinClip微服务
 
 &emsp;Finclip后端业务服务采用了微服务框架，每个服务是一个可以独立多实例部署的模块，通常对应于一个工程项目。有以下特性：
