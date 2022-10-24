@@ -11,7 +11,7 @@ FinClip 数据存储支持多种数据库，通常我们采用 MySQL 作为主�
 
 ## 部署架构
 
-MongoDB 的拓扑图如下
+MySQL 的拓扑图如下
 
 
 ![mysql](/img/mysql.png)
