@@ -146,19 +146,17 @@ title: 部署要求
 #### 基建
 若您决定自行提供部分基建服务，请确保版本不低于该要求
 
-| 服务          | 版本          | 授权协议                    |
+| 服务          | 版本          | 授权协议                   |
 | ------------- | ------------- | -------------------------- |
-| Docker CE     | 19.03         | Apache License 2.0        |
-| Kubernetes    | 1.18.14       | Apache License 2.0        |
-| Rancher       | 2.4.8         | Apache License 2.0        |
-| Zookeeper     | 3.4.14        | Apache License 2.0         |
-| Kafka         | 2.3.1         | Apache License 2.0         |
-| MySQL   | 8.0.27 | GPL                     |
-| Redis         | 6.0.9-buster  | BSD                        |
+| Docker CE     | >= 19.03      | Apache License 2.0      |
+| Kubernetes    | 1.18.14       | Apache License 2.0         |
+| Zookeeper     | 3.6.3         | Apache License 2.0         |
+| Kafka         | 2.8.1         | Apache License 2.0         |
+| MySQL         | 8.0.30        | GPL                        |
+| Redis         | 6.0.16        | BSD                        |
 | ElasticSearch | 6.8.13        | Apache License 2.0         |
-| Consul        | 1.9.1         | Mozilla Public License 1.1 |
+| Consul(可选)  | 1.9.1         | Mozilla Public License 1.1 |
 | MinIO         | 2021-01-08    | GNU Affero GPL             |
-
 
 
 ---
