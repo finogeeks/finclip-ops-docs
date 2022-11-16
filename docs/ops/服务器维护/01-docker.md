@@ -6,12 +6,14 @@ author: xulishan@finogeeks.com
 
 
 
-1. 下载Docker二进制文件
+1. 下载Docker二进制文件并上传至服务器安装
    
+   https://download.dcker.com/linux/static/stable/x86_64/docker-20.10.9.tgz
+   https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-20.10.9.tgz
+   https://github.com/docker/compose/releases/download/v2.7.0/docker-compose-linux-x86_64
+
+
    ```shell
-   wget https://download.dcker.com/linux/static/stable/x86_64/docker-20.10.9.tgz
-   wget https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-20.10.9.tgz
-   wget https://github.com/docker/compose/releases/download/v2.7.0/docker-compose-linux-x86_64
    
    tar xvf docker-20.10.9.tgz
    tar xvf docker-rootless-extras-20.10.9.tgz
