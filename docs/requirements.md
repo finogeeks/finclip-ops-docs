@@ -33,9 +33,9 @@ title: 部署要求
 
 角色分配可以参考下图▼：
 
-![role1](/img/role1.png)
+![role1](/img/finclip-docker-compose.png)
 
-该配置档的服务器所能承载的 [极限³](#explain3)  指标参见下表▼：
+该配置档的服务器所能承载的 TPS 指标参见下表▼：
 
 | 指标     | 数据      |
 | -------- | --------- |
