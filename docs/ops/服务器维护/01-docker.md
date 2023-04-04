@@ -8,7 +8,7 @@ author: xulishan@finogeeks.com
 
 1. 下载Docker二进制文件并上传至服务器安装
    
-   https://download.dcker.com/linux/static/stable/x86_64/docker-20.10.9.tgz
+   https://download.docker.com/linux/static/stable/x86_64/docker-20.10.9.tgz
    https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-20.10.9.tgz
    https://github.com/docker/compose/releases/download/v2.7.0/docker-compose-linux-x86_64
 
@@ -22,7 +22,7 @@ author: xulishan@finogeeks.com
    mv docker-rootless-extras/* /usr/bin
    
    mkdir -p /usr/local/lib/docker/cli-plugins/
-   cp docker-compose-linux-x86_64 /usr/local/bin/docker-compose-linux
+   cp docker-compose-linux-x86_64 /usr/local/bin/docker-compose
    mv docker-compose-linux-x86_64 /usr/local/lib/docker/cli-plugins/docker-compose
    chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
    chmod +x /usr/local/bin/docker-compose
