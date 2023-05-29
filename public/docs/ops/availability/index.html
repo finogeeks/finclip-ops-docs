@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" as="font" href="https://devops.finclip.com/fonts/vendor/jost/jost-v4-latin-regular.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="https://devops.finclip.com/fonts/vendor/jost/jost-v4-latin-700.woff2"  type="font/woff2" crossorigin>
+
+
+<link rel="stylesheet" href="https://devops.finclip.com/main.css">
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+  
+  
+  
+    
+  
+  
+  
+  
+    
+  
+  
+  
+
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+
+	
+
+
+	
+
+<title>可用性 | FinClip 运维文档</title>
+<meta name="description" content="FinClip小程序平台运维文档， 架构介绍以及技术说明。">
+<link rel="canonical" href="https://devops.finclip.com/docs/ops/availability/">
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          {
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Home",
+            "item": "https://devops.finclip.com/"
+          },
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  2 ,
+            "name": "Docs",
+            "item": "https://devops.finclip.com/docs/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  3 ,
+            "name": "Ops",
+            "item": "https://devops.finclip.com/docs/ops/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  4 ,
+            "name": "Availability",
+            "item": "https://devops.finclip.com/docs/ops/availability/"
+          },
+        
+      
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="theme-color" content="#fff">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://devops.finclip.com/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://devops.finclip.com/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://devops.finclip.com/favicon-16x16.png">
+  
+    <link rel="manifest" href="https://devops.finclip.com/site.webmanifest" crossorigin>
+  
+
+
+  
+
+</head>
+
+  
+
+<body class="docs single">
+  
+  
+  
+  
+<div class="header-bar fixed-top"></div>
+<header class="navbar fixed-top navbar-expand-md navbar-light">
+	<div class="container">
+		<input class="menu-btn order-0" type="checkbox" id="menu-btn">
+		<label class="menu-icon d-md-none" for="menu-btn"><span class="navicon"></span></label>
+		<a class="navbar-brand order-1 order-md-0 me-auto" href="https://devops.finclip.com"><img src="/logo.png" style="width:200px;"></a>
+		<button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="Toggle mode">
+			<span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+			<span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+		</button>
+		<ul class="navbar-nav fork-me order-3 order-md-5">
+			
+				
+					<li class="nav-item">
+						<a class="nav-link" href="https://github.com/finogeeks/finclip-ops-docs"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ms-2 visually-hidden">GitHub</span></a>
+					</li>
+				
+			
+		</ul>
+		<div class="collapse navbar-collapse order-4 order-md-1">
+			<ul class="navbar-nav main-nav me-auto order-5 order-md-2">
+				
+					
+				
+				
+				
+					
+						<li class="nav-item docs active">
+							<a class="nav-link" href="https://devops.finclip.com/docs/deploy/introduction/">文档</a>
+						</li>
+					
+						<li class="nav-item">
+							<a class="nav-link" href="https://devops.finclip.com/blog/">博客</a>
+						</li>
+					
+				
+			</ul>
+			<div class="break order-6 d-md-none"></div>
+			
+				<form class="navbar-form flex-grow-1 order-7 order-md-3">
+					<input id="userinput" class="form-control is-search" type="search" placeholder="Search docs..."
+						aria-label="Search docs..." autocomplete="off">
+					<div id="suggestions" class="shadow bg-white rounded"></div>
+				</form>
+			
+		</div>
+	</div>
+</header>
+
+
+
+  
+<div class="wrap container" role="document">
+  <div class="content">
+    <div class="row flex-xl-nowrap">
+	  
+<div class="col-lg-5 col-xl-4 docs-sidebar">
+	<nav class="docs-links" aria-label="Main navigation">
+			
+			
+			
+			
+					
+					
+					
+							<h3>运维部署</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/deploy/introduction/">概述</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/deploy/requirements/">资源需求</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/deploy/deploy/">部署模式</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>参考说明</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/reference/architecture/">运维架构</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/reference/servicelist/">业务组件</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>运行维护</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/orchestration/">服务编排</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/monitoring/">监控系统</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/logging/">日志系统</a></li>
+							                           
+									<li><a class="docs-link active" href="https://devops.finclip.com/docs/ops/availability/">可用性</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/scalability/">可扩展性</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/security/">安全性</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/performance/">性能优化</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>运维笔记</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/notes/docker-offline/">Docker离线安装</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/notes/update-license/">License更新</a></li>
+							
+					</ul>
+					
+					
+			
+	</nav>
+</div>
+
+	  
+  
+
+      <main class="docs-content col-xl-10">
+        <h1>可用性</h1>
+        
+        <p> 在互联网业务系统中，高可用是非常重要的一环。为了向用户提供长期稳定的服务，FinClip 在架构设计上便要求所有组件均满足高可用扩展的要求。</p>
+<p> 首先，对于基础服务，我们选择业界主流的开源解决方案。在生产环境采用多节点部署，所有基础服务包括MySQL、Redis及其他基础服务均采用集群模式部署，以满足高可用要求，在实际运行中，这样的架构设计可以抵抗一定程度的服务器或网络故障。</p>
+<p> 对于 FinClip 服务端程序，我们采用无状态微服务架构。因此，FinClip服务端程序可以采用微服务的高可用最佳实践。通常，我们将 FinClip服务端以多副本的形式运行在容器平台之上，借助容器平台的运维能力，可以实现后端服务的自动故障切换、多副本部署、服务器节点管理等高可用场景需求。</p>
+<h3 id="shu-ju-cun-chu-mysql">数据存储（MySQL）</h3>
+<p> MySQL是一种广泛使用的关系数据库管理系统，它是开源的，用户可以免费使用。MySQL能够在各种操作系统（例如Linux，Windows和Mac OS）上运行，并通过SQL语言实现与其交互。MySQL被广泛用于Web应用程序和网站开发，以便在后台管理和存储数据。MySQL可以处理大量数据，具有高可靠性和高性能，并提供了许多工具和API，以方便开发人员进行数据库管理和查询。</p>
+<p> FinClip 数据存储支持多种数据库。通常，我们采用 MySQL 作为主要的存储方案，MongoDB 是一个基于分 布式文件存储的数据库，由 C++ 语言编写，旨在为 WEB 应用提供可扩展的高性能数据存储解决方案，且支持多机房部署。在实际部署中，我们使用 MongoDB 的副本集模式，以满足可扩展、高可用的运维需求。</p>
+<p> MySQL主从复制可以将数据从一台数据库服务器（主服务器）复制到一台或多台其他数据库服务器（从服务器）。Master记录更新，然后同步到Slave。Slave Node输出一条消息，表明它已成功接收到更新，从而允许发送后续更新。主从复制可以是同步的也可以是异步的。区别只是变化传播的时间。如果同时对master和slave进行修改，则为同步。如果更改排队并稍后写入，则它是异步的。</p>
+<img src="/images/mysql-replication.png"  width="800" />
+<h3 id="shu-ju-huan-cun-redis">数据缓存（Redis）</h3>
+<p> FinClip采用 Redis 实现数据缓存。Redis 是一种开源(BSD 许可)、内存中数据结构存储的开源软件，通常 用作数据库、缓存和消息代理。 Redis 提供了诸如字符串、散列、列表、集合、带范围查询的排序集合、位图、 超级日志、地理空间索引和流等数据结构。</p>
+<p> 通常，我们采用集群模式部署Redis，以确保系统实现高可用功能。在这种模式下，Redis存储空间会被分为多个区间，每个区间的数据将被存储在所属的主从实例中。例如：假设我们有 6 台服务器，我们可以部署一个由 3 主 3 从 组成的集群，Redis会将数据分成三个部分并存储其中。</p>
+<br>
+<br>
+<img src="/images/redis-cluster.png"  width="800" />
+<br>
+<br>
+<p> 当Reids集群中出现Slave节点宕机时，Redis集群访问不受影响，当集群中出现Master节点宕机时，其对应的从节点将提升为主节点，为业务提供访问，由此实现了Redis集群的高可用性。</p>
+<h3 id="finclipwei-fu-wu">FinClip微服务</h3>
+<p> Finclip后端业务服务采用了微服务框架，每个服务是一个可以独立多实例部署的模块，通常对应于一个工程项目。有以下特性：</p>
+<p>  <strong>服务发现与注册：</strong> 微服务使用了consul组件进行注册与发现，通过consul，可以监控微服务活动状态。</p>
+<p>  <strong>负载均衡：</strong> 结合k8s和consul技术，微服务之间的访问是负载均衡的调用。</p>
+<p>  <strong>可扩展：</strong> 每个服务都是可以多实例部署。</p>
+<p>  <strong>高并发：</strong> 采用了集群模式的redis缓存机制和grpc调用机制，同时技术上使得同一个key分布在多个redis槽，提高redis访问命中率，提高并发程度。</p>
+<p> finclip框架如下：</p>
+<img src="/images/finclip-arch.png"  width="800" />
+<p> 系统总体架构上分为网关层、业务服务层、数据层、基础设施层。</p>
+<p> <strong>网关层：</strong> 集成了流量控制、权限控制、负载均衡、网络隔离等功能。</p>
+<p> <strong>业务服务层：</strong> 是业务、需求的实现层。</p>
+<p> <strong>数据层：</strong> 业务或者非业务产生数据，需要落地到db(数据库)，同步到缓存(redis)，发送消息队列，文件存储(对象存储)等。</p>
+<p> <strong>基础设施层：</strong> 底层支撑，包括虚拟机操作系统、网络物理层、硬盘等。</p>
+
+        
+        
+<div class="docs-navigation d-flex justify-content-between">
+  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+            
+              
+              <a href="https:&#x2F;&#x2F;devops.finclip.com&#x2F;docs&#x2F;reference&#x2F;servicelist&#x2F;">
+                <div class="card my-1">
+                  <div class="card-body py-2">
+                    &larr; 业务组件
+                  </div>
+                </div>
+              </a>
+            
+            
+            
+          
+        
+      
+        
+        
+          
+        
+      
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+          
+          
+          <a class="ms-auto" href="https:&#x2F;&#x2F;devops.finclip.com&#x2F;docs&#x2F;notes&#x2F;docker-offline&#x2F;">
+            <div class="card my-1">
+              <div class="card-body py-2">
+                Docker离线安装 &rarr;
+              </div>
+            </div>
+          </a>
+          
+          
+          
+        
+      
+    
+  
+</div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+
+  
+    
+<footer class="footer text-muted">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 order-last order-lg-first">
+				<ul class="list-inline">
+					
+						<li class="list-inline-item">Powered by <a href="https://www.finogeeks.com/">Finogeeks</a> and <a href="https://www.finclip.com/">FinClip</a></li>
+					
+				</ul>
+			</div>
+			<div class="col-lg-8 order-first order-lg-last text-lg-end">
+				<ul class="list-inline">
+					
+						
+							<li class="list-inline-item"><a href="https://www.finclip.com/terms">服务协议</a></li>
+						
+							<li class="list-inline-item"><a href="https://www.finclip.com/blog">产品博客</a></li>
+						
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+
+  
+
+  
+<script type="text/javascript" src="https://devops.finclip.com/js/main.js" defer></script>
+
+  <script type="text/javascript" src="https://devops.finclip.com/plugins/elasticlunr.min.js" defer></script>
+  <script type="text/javascript" src="https://devops.finclip.com/search_index.en.js" defer></script>
+  <script type="text/javascript" src="https://devops.finclip.com/js/search.js" defer></script>
+
+  
+</body>
+</html>

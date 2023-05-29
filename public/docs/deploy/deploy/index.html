@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" as="font" href="https://devops.finclip.com/fonts/vendor/jost/jost-v4-latin-regular.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="https://devops.finclip.com/fonts/vendor/jost/jost-v4-latin-700.woff2"  type="font/woff2" crossorigin>
+
+
+<link rel="stylesheet" href="https://devops.finclip.com/main.css">
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+  
+  
+  
+    
+  
+  
+  
+  
+    
+  
+  
+  
+
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+
+	
+
+
+	
+
+<title>部署模式 | FinClip 运维文档</title>
+<meta name="description" content="FinClip小程序平台运维文档， 架构介绍以及技术说明。">
+<link rel="canonical" href="https://devops.finclip.com/docs/deploy/deploy/">
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          {
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Home",
+            "item": "https://devops.finclip.com/"
+          },
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  2 ,
+            "name": "Docs",
+            "item": "https://devops.finclip.com/docs/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  3 ,
+            "name": "Deploy",
+            "item": "https://devops.finclip.com/docs/deploy/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  4 ,
+            "name": "Deploy",
+            "item": "https://devops.finclip.com/docs/deploy/deploy/"
+          },
+        
+      
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="theme-color" content="#fff">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://devops.finclip.com/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://devops.finclip.com/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://devops.finclip.com/favicon-16x16.png">
+  
+    <link rel="manifest" href="https://devops.finclip.com/site.webmanifest" crossorigin>
+  
+
+
+  
+
+</head>
+
+  
+
+<body class="docs single">
+  
+  
+  
+  
+<div class="header-bar fixed-top"></div>
+<header class="navbar fixed-top navbar-expand-md navbar-light">
+	<div class="container">
+		<input class="menu-btn order-0" type="checkbox" id="menu-btn">
+		<label class="menu-icon d-md-none" for="menu-btn"><span class="navicon"></span></label>
+		<a class="navbar-brand order-1 order-md-0 me-auto" href="https://devops.finclip.com"><img src="/logo.png" style="width:200px;"></a>
+		<button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="Toggle mode">
+			<span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+			<span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+		</button>
+		<ul class="navbar-nav fork-me order-3 order-md-5">
+			
+				
+					<li class="nav-item">
+						<a class="nav-link" href="https://github.com/finogeeks/finclip-ops-docs"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ms-2 visually-hidden">GitHub</span></a>
+					</li>
+				
+			
+		</ul>
+		<div class="collapse navbar-collapse order-4 order-md-1">
+			<ul class="navbar-nav main-nav me-auto order-5 order-md-2">
+				
+					
+				
+				
+				
+					
+						<li class="nav-item docs active">
+							<a class="nav-link" href="https://devops.finclip.com/docs/deploy/introduction/">文档</a>
+						</li>
+					
+						<li class="nav-item">
+							<a class="nav-link" href="https://devops.finclip.com/blog/">博客</a>
+						</li>
+					
+				
+			</ul>
+			<div class="break order-6 d-md-none"></div>
+			
+				<form class="navbar-form flex-grow-1 order-7 order-md-3">
+					<input id="userinput" class="form-control is-search" type="search" placeholder="Search docs..."
+						aria-label="Search docs..." autocomplete="off">
+					<div id="suggestions" class="shadow bg-white rounded"></div>
+				</form>
+			
+		</div>
+	</div>
+</header>
+
+
+
+  
+<div class="wrap container" role="document">
+  <div class="content">
+    <div class="row flex-xl-nowrap">
+	  
+<div class="col-lg-5 col-xl-4 docs-sidebar">
+	<nav class="docs-links" aria-label="Main navigation">
+			
+			
+			
+			
+					
+					
+					
+							<h3>运维部署</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/deploy/introduction/">概述</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/deploy/requirements/">资源需求</a></li>
+							                           
+									<li><a class="docs-link active" href="https://devops.finclip.com/docs/deploy/deploy/">部署模式</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>参考说明</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/reference/architecture/">运维架构</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/reference/servicelist/">业务组件</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>运行维护</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/orchestration/">服务编排</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/monitoring/">监控系统</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/logging/">日志系统</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/availability/">可用性</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/scalability/">可扩展性</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/security/">安全性</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/performance/">性能优化</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>运维笔记</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/notes/docker-offline/">Docker离线安装</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/notes/update-license/">License更新</a></li>
+							
+					</ul>
+					
+					
+			
+	</nav>
+</div>
+
+	  
+  
+  <nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
+  	<div class="page-links">
+  			<h3>On this page</h3>
+  			<nav id="TableOfContents">
+  					<ul>
+  							
+  							<li><a href="https://devops.finclip.com/docs/deploy/deploy/#jian-jie">简介</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/deploy/deploy/#dan-jie-dian">单节点</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/deploy/deploy/#ji-qun-bu-shu">集群部署</a></li>
+  							
+  									<ul>
+  											
+  											<li><a href="https://devops.finclip.com/docs/deploy/deploy/#jia-gou-gai-shu">架构概述</a></li>
+  											
+  											<li><a href="https://devops.finclip.com/docs/deploy/deploy/#xiao-gui-mo-ji-qun">小规模集群</a></li>
+  											
+  											<li><a href="https://devops.finclip.com/docs/deploy/deploy/#zhong-da-gui-mo-ji-qun">中大规模集群</a></li>
+  											
+  									</ul>
+  							
+  							
+  					</ul>
+  			</nav>
+  	</div>
+  </nav>
+  
+
+      <main class="docs-content col-xl-10">
+        <h1>部署模式</h1>
+        <p class="lead">本节主要介绍部署 FinClip小程序数字化管理系统 私有化部署的几种部署模式。</p>
+        <h3 id="jian-jie">简介</h3>
+<p>  在业务系统运行之前，我们需要针对业务架构进行规划。我们希望小程序平台在满足业务用户访问的同时，尽可能节省服务器和网络资源，同时，对于业务生产环境，我们还会通过架构优化调整，以提升系统的可用性、扩展性和可维护性。</p>
+<h3 id="dan-jie-dian">单节点</h3>
+<p>  在产品功能验证(POC)和测试环节，我们通常希望快速体验小程序平台功能，在这种情况下，简便快速的部署是最合理的交付方式，FinClip小程序数字化管理系统支持单节点部署模式，顾名思义，单节点部署模式就是将所有后台服务运行在一台服务器中，单节点的部署架构适合做测试环境，由于小程序平台采用高性能的编程语言构建，单节点部署也能支撑一定量的用户访问，因此，这种部署模式也适用于对容灾没有要求，或整体业务规模较小的客户使用。</p>
+<p>在单节点部署模式中，所有服务将部署在一台服务器中：</p>
+<p><img src="/images/docker-compose.png" alt="role1" /></p>
+<p><strong>资源配置:</strong></p>
+<table><thead><tr><th>配置</th><th>CPU</th><th>内存</th><th>储存空间</th><th>部署服务</th><th>TPS</th></tr></thead><tbody>
+<tr><td>最低配置</td><td>4 核</td><td>8 GB</td><td>100 GB</td><td>数据库、缓存和FinClip微服务</td><td>5k</td></tr>
+<tr><td>推荐配置</td><td>8 核</td><td>16 GB</td><td>200 GB</td><td>数据库、缓存和FinClip微服务</td><td>8k</td></tr>
+</tbody></table>
+<p><strong>系统:</strong></p>
+<ul>
+<li>芯片架构: X86</li>
+<li>操作系统: CentOS 7.9 或 Ubuntu 22.04 、 KylinOS V10 等</li>
+</ul>
+<br>
+<hr />
+<h3 id="ji-qun-bu-shu">集群部署</h3>
+<p>  FinClip 所有组件支持集群模式部署。对于业务生产环境， 我们建议采用集群模式部署。集群模式部署能够提供一定程度的、软件层面的故障转移能力。集群模式部署在提供更高的业务访问能力的同时，还能支持动态扩展，当业务系统访问量增高时，我们可以增加计算资源来扩大业务系统规模。另一方面，采用集群模式部署的的FinClip也能提供更好的运维可维护性。</p>
+<h4 id="jia-gou-gai-shu">架构概述</h4>
+<p>  FinClip 后端服务采用 Golang 语言编写，系统架构采用微服务架构，每个服务经过编译之后会被打包成容器，我 们采用业界主流的容器管理平台进行服务编排, 因此，我们大部分运维能力，包括服务的故障转移、动态扩容、资源管理等能力都是依赖于容器平台实现。此外，FinClip 还依赖部分成熟的开源组件作为基础设施，以实现 业务系统中的数据存储、缓存等.</p>
+<p>以下是架构图：
+<br></p>
+<img src="/images/finclip-ops-arch.png"  width="750" />
+<br>
+<br>
+<h4 id="xiao-gui-mo-ji-qun">小规模集群</h4>
+<p>  小规模集群的部署架构提供最小规模的高可用，需要使用四台服务器，其中四台服务器只能宕机一台，适合绝大部分的、对高可用与故障隔离具有较小要求的客户。</p>
+<p>小规模集群将采用 Kubernetes 的方式部署，所需的配置可以参考下表▼：</p>
+<table><thead><tr><th>用途</th><th>CPU</th><th>内存</th><th>储存空间</th><th>数量</th><th>参考 TPS</th></tr></thead><tbody>
+<tr><td>业务服务</td><td>8 核</td><td>16 GB</td><td>500 GB</td><td>4 台</td><td>3w</td></tr>
+<tr><td>运维管理(可选)</td><td>8 核</td><td>16 GB</td><td>500 GB</td><td>1 台</td><td>-</td></tr>
+</tbody></table>
+<p>角色分配可以参考下图▼：</p>
+<img src="/images/finclip-k8s-sm.png"  width="750" />
+<br>
+<br>
+<p><strong>系统:</strong></p>
+<ul>
+<li>芯片架构: X86</li>
+<li>操作系统: CentOS 7.9 或 Ubuntu 22.04 、 KylinOS V10 等</li>
+</ul>
+<br>
+<p><strong>部署说明：</strong> 所有服务将均匀部署在四台服务器中， 数据库和缓存系统使用docker compose部署在主机，业务服务使用Kubernetes进行部署，均匀分布在四台服务器。
+<br></p>
+<h4 id="zhong-da-gui-mo-ji-qun">中大规模集群</h4>
+<p>  集群模式部署能够提供一定程度的、软件层面的故障转移能力。大规模集群的部署架构适合对可扩展性、灾备等指标有要求的客户使用。该架构的集群设计上主要关注在于故障隔离、故障恢复、可拓展性等方面。</p>
+<p>  大规模集群的服务器数量没有上限，支持多活、多机房部署，可根据业务规模、灾备要求自定义。相比小规模集群，大规模集群可以提供更高的QPS，更好的性能以及更好的扩展性。</p>
+<br>
+<p>大规模集群将采用 Kubernetes 的方式部署，所需的配置可以参考下表(磁盘建议使用SSD)▼：</p>
+<table><thead><tr><th>用途</th><th>CPU</th><th>内存</th><th>储存空间</th><th>数量</th><th>参考 TPS</th></tr></thead><tbody>
+<tr><td>业务服务</td><td>8 核</td><td>16 GB</td><td>500 GB</td><td>8 台</td><td>6w</td></tr>
+<tr><td>运维管理</td><td>8 核</td><td>16 GB</td><td>500 GB</td><td>1 台</td><td>-</td></tr>
+</tbody></table>
+<p>角色分配可以参考下图▼：</p>
+<img src="/images/finclip-k8s-xl.png"  width="750" />
+<br>
+<br>
+<p><strong>系统:</strong></p>
+<ul>
+<li>芯片架构: X86</li>
+<li>操作系统: CentOS 7.9 或 Ubuntu 22.04 、 KylinOS V10 等</li>
+</ul>
+<br>
+<p><strong>部署说明：</strong> 与小规模部署类似，不过，大规模集群部署采用更多的服务器，业务服务与基础服务分离， 微服务采用更多的实例数部署，以承担更高的用户访问。</p>
+
+        
+        
+<div class="docs-navigation d-flex justify-content-between">
+  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+      
+      
+        
+          
+          
+          <a class="ms-auto" href="https:&#x2F;&#x2F;devops.finclip.com&#x2F;docs&#x2F;reference&#x2F;architecture&#x2F;">
+            <div class="card my-1">
+              <div class="card-body py-2">
+                运维架构 &rarr;
+              </div>
+            </div>
+          </a>
+          
+          
+          
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+  
+</div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+
+  
+    
+<footer class="footer text-muted">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 order-last order-lg-first">
+				<ul class="list-inline">
+					
+						<li class="list-inline-item">Powered by <a href="https://www.finogeeks.com/">Finogeeks</a> and <a href="https://www.finclip.com/">FinClip</a></li>
+					
+				</ul>
+			</div>
+			<div class="col-lg-8 order-first order-lg-last text-lg-end">
+				<ul class="list-inline">
+					
+						
+							<li class="list-inline-item"><a href="https://www.finclip.com/terms">服务协议</a></li>
+						
+							<li class="list-inline-item"><a href="https://www.finclip.com/blog">产品博客</a></li>
+						
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+
+  
+
+  
+<script type="text/javascript" src="https://devops.finclip.com/js/main.js" defer></script>
+
+  <script type="text/javascript" src="https://devops.finclip.com/plugins/elasticlunr.min.js" defer></script>
+  <script type="text/javascript" src="https://devops.finclip.com/search_index.en.js" defer></script>
+  <script type="text/javascript" src="https://devops.finclip.com/js/search.js" defer></script>
+
+  
+</body>
+</html>

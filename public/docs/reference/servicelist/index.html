@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" as="font" href="https://devops.finclip.com/fonts/vendor/jost/jost-v4-latin-regular.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="https://devops.finclip.com/fonts/vendor/jost/jost-v4-latin-700.woff2"  type="font/woff2" crossorigin>
+
+
+<link rel="stylesheet" href="https://devops.finclip.com/main.css">
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+  
+  
+  
+    
+  
+  
+  
+  
+    
+  
+  
+  
+
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+
+	
+
+
+	
+
+<title>业务组件 | FinClip 运维文档</title>
+<meta name="description" content="FinClip小程序平台运维文档， 架构介绍以及技术说明。">
+<link rel="canonical" href="https://devops.finclip.com/docs/reference/servicelist/">
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          {
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Home",
+            "item": "https://devops.finclip.com/"
+          },
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  2 ,
+            "name": "Docs",
+            "item": "https://devops.finclip.com/docs/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  3 ,
+            "name": "Reference",
+            "item": "https://devops.finclip.com/docs/reference/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  4 ,
+            "name": "Servicelist",
+            "item": "https://devops.finclip.com/docs/reference/servicelist/"
+          },
+        
+      
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="theme-color" content="#fff">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://devops.finclip.com/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://devops.finclip.com/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://devops.finclip.com/favicon-16x16.png">
+  
+    <link rel="manifest" href="https://devops.finclip.com/site.webmanifest" crossorigin>
+  
+
+
+  
+
+</head>
+
+  
+
+<body class="docs single">
+  
+  
+  
+  
+<div class="header-bar fixed-top"></div>
+<header class="navbar fixed-top navbar-expand-md navbar-light">
+	<div class="container">
+		<input class="menu-btn order-0" type="checkbox" id="menu-btn">
+		<label class="menu-icon d-md-none" for="menu-btn"><span class="navicon"></span></label>
+		<a class="navbar-brand order-1 order-md-0 me-auto" href="https://devops.finclip.com"><img src="/logo.png" style="width:200px;"></a>
+		<button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="Toggle mode">
+			<span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+			<span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+		</button>
+		<ul class="navbar-nav fork-me order-3 order-md-5">
+			
+				
+					<li class="nav-item">
+						<a class="nav-link" href="https://github.com/finogeeks/finclip-ops-docs"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ms-2 visually-hidden">GitHub</span></a>
+					</li>
+				
+			
+		</ul>
+		<div class="collapse navbar-collapse order-4 order-md-1">
+			<ul class="navbar-nav main-nav me-auto order-5 order-md-2">
+				
+					
+				
+				
+				
+					
+						<li class="nav-item docs active">
+							<a class="nav-link" href="https://devops.finclip.com/docs/deploy/introduction/">文档</a>
+						</li>
+					
+						<li class="nav-item">
+							<a class="nav-link" href="https://devops.finclip.com/blog/">博客</a>
+						</li>
+					
+				
+			</ul>
+			<div class="break order-6 d-md-none"></div>
+			
+				<form class="navbar-form flex-grow-1 order-7 order-md-3">
+					<input id="userinput" class="form-control is-search" type="search" placeholder="Search docs..."
+						aria-label="Search docs..." autocomplete="off">
+					<div id="suggestions" class="shadow bg-white rounded"></div>
+				</form>
+			
+		</div>
+	</div>
+</header>
+
+
+
+  
+<div class="wrap container" role="document">
+  <div class="content">
+    <div class="row flex-xl-nowrap">
+	  
+<div class="col-lg-5 col-xl-4 docs-sidebar">
+	<nav class="docs-links" aria-label="Main navigation">
+			
+			
+			
+			
+					
+					
+					
+							<h3>运维部署</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/deploy/introduction/">概述</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/deploy/requirements/">资源需求</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/deploy/deploy/">部署模式</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>参考说明</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/reference/architecture/">运维架构</a></li>
+							                           
+									<li><a class="docs-link active" href="https://devops.finclip.com/docs/reference/servicelist/">业务组件</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>运行维护</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/orchestration/">服务编排</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/monitoring/">监控系统</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/logging/">日志系统</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/availability/">可用性</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/scalability/">可扩展性</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/security/">安全性</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/performance/">性能优化</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>运维笔记</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/notes/docker-offline/">Docker离线安装</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/notes/update-license/">License更新</a></li>
+							
+					</ul>
+					
+					
+			
+	</nav>
+</div>
+
+	  
+  
+  <nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
+  	<div class="page-links">
+  			<h3>On this page</h3>
+  			<nav id="TableOfContents">
+  					<ul>
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#ye-wu-wang-guan">业务网关</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#jiao-se-guan-li-mo-kuai-zhang-hao-xi-tong">角色管理模块、账号系统</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#hui-du-shu-ju-cha-kan-zui-xin-mo-kuai">灰度数据查看最新模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#xiao-cheng-xu-ying-yong-guan-li-mo-kuai">小程序、应用管理模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#xiao-cheng-xu-sou-suo-mo-kuai">小程序搜索模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#xiao-cheng-xu-sou-suo-pa-chong-mo-kuai">小程序搜索爬虫模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#xiao-cheng-xu-bian-yi-gong-cheng-mo-kuai">小程序编译工程模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#qian-duan-xiao-cheng-xu-bian-yi-gong-cheng-mo-kuai">前端小程序编译工程模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#xiao-cheng-xu-wen-zhang-fa-bu-zhong-xin-mo-kuai">小程序文章发布中心模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#dai-ban-zhong-xin-mo-kuai">待办中心模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#jian-quan-he-cha-mo-kuai">鉴权核查模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#ji-chu-ku-fu-wu-mo-kuai">基础库服务模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#sdk-kong-zhi-guan-li-mo-kuai">SDK 控制管理模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#she-bei-an-quan-guan-li-mo-kuai">设备安全管理模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#yu-ming-guan-li-mo-kuai">域名管理模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#tou-su-fan-kui-mo-kuai">投诉反馈模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#bang-zhu-zhong-xin-mo-kuai">帮助中心模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#license-xiao-yan-zhong-xin-mo-kuai">License 校验中心模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#wang-pan-zhong-jian-ceng-fu-wu-mo-kuai">网盘中间层服务模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#tong-zhi-zhong-xin-mo-kuai">通知中心模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#shu-ju-shang-bao-fu-wu-mo-kuai">数据上报服务模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#gui-ze-yin-qing-fu-wu-mo-kuai">规则引擎服务模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#sdk-shen-he-guan-li-mo-kuai">SDK 审核管理模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#fa-song-yan-zheng-ma-wang-guan-mo-kuai">发送验证码网关模块</a></li>
+  							
+  							
+  							<li><a href="https://devops.finclip.com/docs/reference/servicelist/#qps-tong-ji-fu-wu">QPS 统计服务</a></li>
+  							
+  							
+  					</ul>
+  			</nav>
+  	</div>
+  </nav>
+  
+
+      <main class="docs-content col-xl-10">
+        <h1>业务组件</h1>
+        <p class="lead">本节主要介绍部署 FinClip小程序数字化管理系统 主要的服务组件和对应功能。</p>
+        <h4 id="ye-wu-wang-guan">业务网关</h4>
+<p>服务名：<strong>gateway</strong></p>
+<ul>
+<li>
+<p>网关用于接受所有业务请求，反向代理到小程序平台中的具体业务服务处理，所有业务接口统一由此暴露出去；</p>
+</li>
+<li>
+<p>网关上会配置jwt、rate-limiting、监控、链路跟踪以及自定义开发等插件，根据业务需要做相关校验或者拦截处理。</p>
+</li>
+</ul>
+<p></p>
+<h4 id="jiao-se-guan-li-mo-kuai-zhang-hao-xi-tong">角色管理模块、账号系统</h4>
+<p>服务名：<strong>account-system</strong></p>
+<ul>
+<li>小程序平台两个主要角色是机构方和运营方，运营方对机构方进行审核、审批、管控等。使用小程序平台之前，需要机构方进行注册、申请。</li>
+</ul>
+<p></p>
+<h4 id="hui-du-shu-ju-cha-kan-zui-xin-mo-kuai">灰度数据查看最新模块</h4>
+<p>服务名：<strong>app-gray-statistics-center</strong></p>
+<ul>
+<li>查看小程序灰度数据详情，包括：用户分布区域、用户使用终端类型、异常次数、打开次数，以及已上架和灰度版本对比情况。</li>
+</ul>
+<p></p>
+<h4 id="xiao-cheng-xu-ying-yong-guan-li-mo-kuai">小程序、应用管理模块</h4>
+<p>服务名：<strong>app-manage-svr</strong></p>
+<ul>
+<li>该模块是对小程序整个生存信息的管理服务，其中包括小程序创建、小程序信息维护、小程序审核、小程序上下架、应用创建、应用关联小程序这些子任务。该模块是运行时直接调用获取小程序详情（包括小程序描述、logo、下载包等）的入口和出口，所以也是小程序访问量最大的核心模块之一。</li>
+</ul>
+<p></p>
+<h4 id="xiao-cheng-xu-sou-suo-mo-kuai">小程序搜索模块</h4>
+<p>服务名：<strong>app-search</strong></p>
+<ul>
+<li>应用已关联的小程序可在 SDK 进行搜索查看。</li>
+</ul>
+<p></p>
+<h4 id="xiao-cheng-xu-sou-suo-pa-chong-mo-kuai">小程序搜索爬虫模块</h4>
+<p>服务名：<strong>app-spider</strong></p>
+<ul>
+<li>对小程序搜索信息进行统一处理。</li>
+</ul>
+<p></p>
+<h4 id="xiao-cheng-xu-bian-yi-gong-cheng-mo-kuai">小程序编译工程模块</h4>
+<p>服务名：<strong>applet-build-manager</strong></p>
+<ul>
+<li>小程序编译结果的管理。</li>
+</ul>
+<p></p>
+<h4 id="qian-duan-xiao-cheng-xu-bian-yi-gong-cheng-mo-kuai">前端小程序编译工程模块</h4>
+<p>服务名：<strong>applet-build</strong></p>
+<ul>
+<li>对小程序进行编译</li>
+</ul>
+<p></p>
+<h4 id="xiao-cheng-xu-wen-zhang-fa-bu-zhong-xin-mo-kuai">小程序文章发布中心模块</h4>
+<p>服务名：<strong>article-pub-center</strong></p>
+<ul>
+<li>用于运行端发布通告、文章、期刊等。</li>
+</ul>
+<p></p>
+<h4 id="dai-ban-zhong-xin-mo-kuai">待办中心模块</h4>
+<p>服务名：<strong>audit-manage-svr</strong></p>
+<ul>
+<li>运营端、机构端待办中心</li>
+</ul>
+<p></p>
+<h4 id="jian-quan-he-cha-mo-kuai">鉴权核查模块</h4>
+<p>服务名：<strong>auth-checker</strong></p>
+<ul>
+<li>对用户权限进行校验</li>
+</ul>
+<p></p>
+<h4 id="ji-chu-ku-fu-wu-mo-kuai">基础库服务模块</h4>
+<p>服务名：<strong>basic-pack-svr</strong></p>
+<ul>
+<li>本服务主要为记录 SDK 运行时、基础库、凡泰助手的版本信息。</li>
+</ul>
+<p></p>
+<h4 id="sdk-kong-zhi-guan-li-mo-kuai">SDK 控制管理模块</h4>
+<p>服务名：<strong>control-manager</strong></p>
+<ul>
+<li>SDK 获取配置信息，需要后端统一管理。</li>
+</ul>
+<p></p>
+<h4 id="she-bei-an-quan-guan-li-mo-kuai">设备安全管理模块</h4>
+<p>服务名：<strong>device-security</strong></p>
+<ul>
+<li>用于在账号登录的时候，生产 refresh token、jwt。</li>
+</ul>
+<p></p>
+<h4 id="yu-ming-guan-li-mo-kuai">域名管理模块</h4>
+<p>服务名：<strong>domain-manager</strong></p>
+<ul>
+<li>该模块是为了对小程序访问的域名进行控制，域名分为：服务域名、业务域名、白名单域名
+<ol>
+<li>服务域名：小程序运行的时候，需要对小程序发行方的服务器进行访问，该访问的地址也就是这里所说的服务域名。</li>
+<li>业务域名：小程序运行的时候，除了对服务域名访问之外，还需要对第三方域名进行访问，第三方域名要求合规化，那么需要改业务域名进行合规校验，也就是，业务域名需要校验文件进行校验才可以进行访问。</li>
+<li>白名单域名：白名单域名，指的是运营审核方确定合规并且可以正常访问，无需校验的域名访问，例如：证监会、百度等。</li>
+</ol>
+</li>
+</ul>
+<p></p>
+<h4 id="tou-su-fan-kui-mo-kuai">投诉反馈模块</h4>
+<p>服务名：<strong>feedback-svr</strong></p>
+<ul>
+<li>本服务主要记录用户投诉、举报、产品建议信息服务。</li>
+</ul>
+<p></p>
+<h4 id="bang-zhu-zhong-xin-mo-kuai">帮助中心模块</h4>
+<p>服务名：<strong>help-center-svr</strong></p>
+<ul>
+<li>帮助中心的数据处理。</li>
+</ul>
+<p></p>
+<h4 id="license-xiao-yan-zhong-xin-mo-kuai">License 校验中心模块</h4>
+<p>服务名：<strong>license-checker</strong></p>
+<ul>
+<li>License 用于决定小程序平台的部分功能，例如小程序数量、应用数量、灰度发布数量等。</li>
+</ul>
+<p></p>
+<h4 id="wang-pan-zhong-jian-ceng-fu-wu-mo-kuai">网盘中间层服务模块</h4>
+<p>服务名：<strong>netdisk-proxy</strong></p>
+<ul>
+<li>本服务主要为网盘服务提供一个中间层鉴权服务。</li>
+</ul>
+<p></p>
+<h4 id="tong-zhi-zhong-xin-mo-kuai">通知中心模块</h4>
+<p>服务名：<strong>notify</strong></p>
+<ul>
+<li>可以发布运营端通知和机构端消息。</li>
+</ul>
+<p></p>
+<h4 id="shu-ju-shang-bao-fu-wu-mo-kuai">数据上报服务模块</h4>
+<p>服务名：<strong>open-api</strong></p>
+<ul>
+<li>本服务主要为对外开发接口提供统一接入服务。</li>
+</ul>
+<p></p>
+<h4 id="gui-ze-yin-qing-fu-wu-mo-kuai">规则引擎服务模块</h4>
+<p>服务名：<strong>rule-engine-svr</strong></p>
+<ul>
+<li>本服务主要为灰度发布、定制发布进行规则的配置和校验。</li>
+</ul>
+<p></p>
+<h4 id="sdk-shen-he-guan-li-mo-kuai">SDK 审核管理模块</h4>
+<p>服务名：<strong>sdk-manager</strong></p>
+<ul>
+<li>在运营端对企业端提交的SDK进行审核，在企业端提交 SDK 进行审核。</li>
+</ul>
+<p></p>
+<h4 id="fa-song-yan-zheng-ma-wang-guan-mo-kuai">发送验证码网关模块</h4>
+<p>服务名：<strong>verify-code-gateway</strong></p>
+<ul>
+<li>可以配置网关，将短信验证码发送给指定的短信渠道，例如：腾讯云、客户自己的短信服务等。</li>
+</ul>
+<p></p>
+<h4 id="qps-tong-ji-fu-wu">QPS 统计服务</h4>
+<p>服务名：<strong>finclip-qps-static</strong></p>
+<ul>
+<li>统计小程序、API 等接口的访问数据。</li>
+</ul>
+<p></p>
+
+        
+        
+<div class="docs-navigation d-flex justify-content-between">
+  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+            
+              
+              <a href="https:&#x2F;&#x2F;devops.finclip.com&#x2F;docs&#x2F;deploy&#x2F;deploy&#x2F;">
+                <div class="card my-1">
+                  <div class="card-body py-2">
+                    &larr; 部署模式
+                  </div>
+                </div>
+              </a>
+            
+            
+            
+          
+        
+      
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+          
+          
+          <a class="ms-auto" href="https:&#x2F;&#x2F;devops.finclip.com&#x2F;docs&#x2F;ops&#x2F;orchestration&#x2F;">
+            <div class="card my-1">
+              <div class="card-body py-2">
+                服务编排 &rarr;
+              </div>
+            </div>
+          </a>
+          
+          
+          
+        
+      
+    
+      
+      
+        
+      
+    
+  
+</div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+
+  
+    
+<footer class="footer text-muted">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 order-last order-lg-first">
+				<ul class="list-inline">
+					
+						<li class="list-inline-item">Powered by <a href="https://www.finogeeks.com/">Finogeeks</a> and <a href="https://www.finclip.com/">FinClip</a></li>
+					
+				</ul>
+			</div>
+			<div class="col-lg-8 order-first order-lg-last text-lg-end">
+				<ul class="list-inline">
+					
+						
+							<li class="list-inline-item"><a href="https://www.finclip.com/terms">服务协议</a></li>
+						
+							<li class="list-inline-item"><a href="https://www.finclip.com/blog">产品博客</a></li>
+						
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+
+  
+
+  
+<script type="text/javascript" src="https://devops.finclip.com/js/main.js" defer></script>
+
+  <script type="text/javascript" src="https://devops.finclip.com/plugins/elasticlunr.min.js" defer></script>
+  <script type="text/javascript" src="https://devops.finclip.com/search_index.en.js" defer></script>
+  <script type="text/javascript" src="https://devops.finclip.com/js/search.js" defer></script>
+
+  
+</body>
+</html>

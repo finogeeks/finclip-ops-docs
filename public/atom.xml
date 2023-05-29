@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>FinClip 运维文档</title>
+    <subtitle>FinClip小程序平台运维文档， 架构介绍以及技术说明。</subtitle>
+    <link href="https://devops.finclip.com/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://devops.finclip.com"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-05-29T08:50:45+00:00</updated>
+    <id>https://devops.finclip.com/atom.xml</id>
+    <entry xml:lang="en">
+        <title>yehong</title>
+        <published>2023-05-29T08:50:45+00:00</published>
+        <updated>2023-05-29T08:50:45+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devops.finclip.com/authors/yehong/" type="text/html"/>
+        <id>https://devops.finclip.com/authors/yehong/</id>
+        
+        <content type="html">&lt;p&gt;DevOps @Finogeeks&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;yangyehong&quot;&gt;@yehong&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>frp实现内网穿透</title>
+        <published>2023-05-29T00:00:00+00:00</published>
+        <updated>2023-05-29T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devops.finclip.com/blog/frp/" type="text/html"/>
+        <id>https://devops.finclip.com/blog/frp/</id>
+        
+        <content type="html">&lt;p&gt;&lt;strong&gt;项目地址：&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;gong-neng&quot;&gt;功能&lt;&#x2F;h3&gt;
+&lt;p&gt;通过frp，使处于内网或无固定公网ip的机器，对外网环境提供 tcp 和 udp 服务，例如在家里通过 ssh 访问处于公司内网环境内的主机&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;zhun-bei&quot;&gt;准备&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;1. 公网服务器1台 （服务端）&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;2. 内网电脑 1 台 （客户端）&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;an-zhuang&quot;&gt;安装&lt;&#x2F;h3&gt;
+&lt;h3 id=&quot;1-xia-zai-an-zhuang-bao&quot;&gt;1. 下载安装包。&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp&#x2F;releases&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;都执行&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;shell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-shell &quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span&gt;mkdir -p &#x2F;opt&#x2F;frp 
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;cd &#x2F;opt&#x2F;frp
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;wget https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp&#x2F;releases&#x2F;download&#x2F;v0.25.0&#x2F;frp_0.25.0_linux_amd64.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;tar -zxvf frp_0.25.0_linux_amd64.tar.gz
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;2-fu-wu-duan-pei-zhi&quot;&gt;2.服务端配置&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;shell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-shell &quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span&gt;chmod +x .&#x2F;frps
+&lt;&#x2F;span&gt;&lt;span&gt;vi .&#x2F;frps.ini
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;[common]
+&lt;&#x2F;span&gt;&lt;span&gt;bind_port = 7000    #与客户端绑定的进行通信的端口
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;#启动
+&lt;&#x2F;span&gt;&lt;span&gt;nohup .&#x2F;frps -c .&#x2F;frps.ini &amp;amp;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;3-ke-hu-duan-pei-zhi&quot;&gt;3.客户端配置&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;shell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-shell &quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span&gt;chmod +x .&#x2F;frpc
+&lt;&#x2F;span&gt;&lt;span&gt;vi .&#x2F;frpc.ini
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;[common]
+&lt;&#x2F;span&gt;&lt;span&gt;server_addr = 192.168.1.1  #服务端地址
+&lt;&#x2F;span&gt;&lt;span&gt;server_port = 7000             #对应端口
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;[ssh]
+&lt;&#x2F;span&gt;&lt;span&gt;type = tcp                     #协议
+&lt;&#x2F;span&gt;&lt;span&gt;local_ip = 127.0.0.1             #本机ip
+&lt;&#x2F;span&gt;&lt;span&gt;local_port = 22                 #ssh默认端口号
+&lt;&#x2F;span&gt;&lt;span&gt;remote_port = 6000             #连接客户端端口，注意多个客户端时不能相同
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;#启动
+&lt;&#x2F;span&gt;&lt;span&gt;nohup .&#x2F;frpc -c .&#x2F;frpc.ini &amp;amp;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;4-yan-zheng&quot;&gt;4.验证&lt;&#x2F;h3&gt;
+&lt;p&gt;当客户端成功连上服务端时，服务端会监听客户端上自定义的端口。访问
+服务端地址 192.168.1.1 + 自定义端口 6000 即可&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>部署模式</title>
+        <published>2021-05-01T08:00:00+00:00</published>
+        <updated>2021-05-02T08:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devops.finclip.com/docs/deploy/deploy/" type="text/html"/>
+        <id>https://devops.finclip.com/docs/deploy/deploy/</id>
+        
+        <content type="html">&lt;h3 id=&quot;jian-jie&quot;&gt;简介&lt;&#x2F;h3&gt;
+&lt;p&gt;  在业务系统运行之前，我们需要针对业务架构进行规划。我们希望小程序平台在满足业务用户访问的同时，尽可能节省服务器和网络资源，同时，对于业务生产环境，我们还会通过架构优化调整，以提升系统的可用性、扩展性和可维护性。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dan-jie-dian&quot;&gt;单节点&lt;&#x2F;h3&gt;
+&lt;p&gt;  在产品功能验证(POC)和测试环节，我们通常希望快速体验小程序平台功能，在这种情况下，简便快速的部署是最合理的交付方式，FinClip小程序数字化管理系统支持单节点部署模式，顾名思义，单节点部署模式就是将所有后台服务运行在一台服务器中，单节点的部署架构适合做测试环境，由于小程序平台采用高性能的编程语言构建，单节点部署也能支撑一定量的用户访问，因此，这种部署模式也适用于对容灾没有要求，或整体业务规模较小的客户使用。&lt;&#x2F;p&gt;
+&lt;p&gt;在单节点部署模式中，所有服务将部署在一台服务器中：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;docker-compose.png&quot; alt=&quot;role1&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;资源配置:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;配置&lt;&#x2F;th&gt;&lt;th&gt;CPU&lt;&#x2F;th&gt;&lt;th&gt;内存&lt;&#x2F;th&gt;&lt;th&gt;储存空间&lt;&#x2F;th&gt;&lt;th&gt;部署服务&lt;&#x2F;th&gt;&lt;th&gt;TPS&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;最低配置&lt;&#x2F;td&gt;&lt;td&gt;4 核&lt;&#x2F;td&gt;&lt;td&gt;8 GB&lt;&#x2F;td&gt;&lt;td&gt;100 GB&lt;&#x2F;td&gt;&lt;td&gt;数据库、缓存和FinClip微服务&lt;&#x2F;td&gt;&lt;td&gt;5k&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;推荐配置&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;200 GB&lt;&#x2F;td&gt;&lt;td&gt;数据库、缓存和FinClip微服务&lt;&#x2F;td&gt;&lt;td&gt;8k&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;&lt;strong&gt;系统:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;芯片架构: X86&lt;&#x2F;li&gt;
+&lt;li&gt;操作系统: CentOS 7.9 或 Ubuntu 22.04 、 KylinOS V10 等&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;hr &#x2F;&gt;
+&lt;h3 id=&quot;ji-qun-bu-shu&quot;&gt;集群部署&lt;&#x2F;h3&gt;
+&lt;p&gt;  FinClip 所有组件支持集群模式部署。对于业务生产环境， 我们建议采用集群模式部署。集群模式部署能够提供一定程度的、软件层面的故障转移能力。集群模式部署在提供更高的业务访问能力的同时，还能支持动态扩展，当业务系统访问量增高时，我们可以增加计算资源来扩大业务系统规模。另一方面，采用集群模式部署的的FinClip也能提供更好的运维可维护性。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;jia-gou-gai-shu&quot;&gt;架构概述&lt;&#x2F;h4&gt;
+&lt;p&gt;  FinClip 后端服务采用 Golang 语言编写，系统架构采用微服务架构，每个服务经过编译之后会被打包成容器，我 们采用业界主流的容器管理平台进行服务编排, 因此，我们大部分运维能力，包括服务的故障转移、动态扩容、资源管理等能力都是依赖于容器平台实现。此外，FinClip 还依赖部分成熟的开源组件作为基础设施，以实现 业务系统中的数据存储、缓存等.&lt;&#x2F;p&gt;
+&lt;p&gt;以下是架构图：
+&lt;br&gt;&lt;&#x2F;p&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;finclip-ops-arch.png&quot;  width=&quot;750&quot; &#x2F;&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h4 id=&quot;xiao-gui-mo-ji-qun&quot;&gt;小规模集群&lt;&#x2F;h4&gt;
+&lt;p&gt;  小规模集群的部署架构提供最小规模的高可用，需要使用四台服务器，其中四台服务器只能宕机一台，适合绝大部分的、对高可用与故障隔离具有较小要求的客户。&lt;&#x2F;p&gt;
+&lt;p&gt;小规模集群将采用 Kubernetes 的方式部署，所需的配置可以参考下表▼：&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;用途&lt;&#x2F;th&gt;&lt;th&gt;CPU&lt;&#x2F;th&gt;&lt;th&gt;内存&lt;&#x2F;th&gt;&lt;th&gt;储存空间&lt;&#x2F;th&gt;&lt;th&gt;数量&lt;&#x2F;th&gt;&lt;th&gt;参考 TPS&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;业务服务&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;500 GB&lt;&#x2F;td&gt;&lt;td&gt;4 台&lt;&#x2F;td&gt;&lt;td&gt;3w&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;运维管理(可选)&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;500 GB&lt;&#x2F;td&gt;&lt;td&gt;1 台&lt;&#x2F;td&gt;&lt;td&gt;-&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;角色分配可以参考下图▼：&lt;&#x2F;p&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;finclip-k8s-sm.png&quot;  width=&quot;750&quot; &#x2F;&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;系统:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;芯片架构: X86&lt;&#x2F;li&gt;
+&lt;li&gt;操作系统: CentOS 7.9 或 Ubuntu 22.04 、 KylinOS V10 等&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;部署说明：&lt;&#x2F;strong&gt; 所有服务将均匀部署在四台服务器中， 数据库和缓存系统使用docker compose部署在主机，业务服务使用Kubernetes进行部署，均匀分布在四台服务器。
+&lt;br&gt;&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;zhong-da-gui-mo-ji-qun&quot;&gt;中大规模集群&lt;&#x2F;h4&gt;
+&lt;p&gt;  集群模式部署能够提供一定程度的、软件层面的故障转移能力。大规模集群的部署架构适合对可扩展性、灾备等指标有要求的客户使用。该架构的集群设计上主要关注在于故障隔离、故障恢复、可拓展性等方面。&lt;&#x2F;p&gt;
+&lt;p&gt;  大规模集群的服务器数量没有上限，支持多活、多机房部署，可根据业务规模、灾备要求自定义。相比小规模集群，大规模集群可以提供更高的QPS，更好的性能以及更好的扩展性。&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;大规模集群将采用 Kubernetes 的方式部署，所需的配置可以参考下表(磁盘建议使用SSD)▼：&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;用途&lt;&#x2F;th&gt;&lt;th&gt;CPU&lt;&#x2F;th&gt;&lt;th&gt;内存&lt;&#x2F;th&gt;&lt;th&gt;储存空间&lt;&#x2F;th&gt;&lt;th&gt;数量&lt;&#x2F;th&gt;&lt;th&gt;参考 TPS&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;业务服务&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;500 GB&lt;&#x2F;td&gt;&lt;td&gt;8 台&lt;&#x2F;td&gt;&lt;td&gt;6w&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;运维管理&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;500 GB&lt;&#x2F;td&gt;&lt;td&gt;1 台&lt;&#x2F;td&gt;&lt;td&gt;-&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;角色分配可以参考下图▼：&lt;&#x2F;p&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;finclip-k8s-xl.png&quot;  width=&quot;750&quot; &#x2F;&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;系统:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;芯片架构: X86&lt;&#x2F;li&gt;
+&lt;li&gt;操作系统: CentOS 7.9 或 Ubuntu 22.04 、 KylinOS V10 等&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;部署说明：&lt;&#x2F;strong&gt; 与小规模部署类似，不过，大规模集群部署采用更多的服务器，业务服务与基础服务分离， 微服务采用更多的实例数部署，以承担更高的用户访问。&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>概述</title>
+        <published>2021-05-01T08:00:00+00:00</published>
+        <updated>2021-05-01T08:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devops.finclip.com/docs/deploy/introduction/" type="text/html"/>
+        <id>https://devops.finclip.com/docs/deploy/introduction/</id>
+        
+        <content type="html">&lt;&#x2F;br&gt;
+&lt;p&gt;本文档项目旨在提供全面的FinClip运维手册，尽可能涉及FinClip运行维护的方方面面。&lt;&#x2F;p&gt;
+&lt;p&gt;手册主要描述运维部署架构和日常维护事项，也包含部分应急处理与运维相关技术知识。&lt;&#x2F;p&gt;
+&lt;p&gt;比如：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;服务组件基本架构及各组件配置&lt;&#x2F;li&gt;
+&lt;li&gt;日常运行维护&lt;&#x2F;li&gt;
+&lt;li&gt;故障排查与处理&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;官网：&lt;a href=&quot;https:&#x2F;&#x2F;www.finclip.com&quot;&gt;https:&#x2F;&#x2F;www.finclip.com&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>资源需求</title>
+        <published>2021-05-01T08:00:00+00:00</published>
+        <updated>2021-05-02T08:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devops.finclip.com/docs/deploy/requirements/" type="text/html"/>
+        <id>https://devops.finclip.com/docs/deploy/requirements/</id>
+        
+        <content type="html">&lt;h3 id=&quot;jian-jie&quot;&gt;简介&lt;&#x2F;h3&gt;
+&lt;p&gt;  在业务系统运行之前，我们需要针对业务架构进行规划。我们希望小程序平台在满足业务用户访问的同时，尽可能节省服务器和网络资源，同时，对于业务生产环境，我们还会通过架构优化调整，以提升系统的可用性、扩展性和可维护性。&lt;&#x2F;p&gt;
+&lt;p&gt;以下是部署FinClip所需的推荐资源配置，每一种配置都对应着相应的部署模式，关于不同的部署模式，请参考说明：&lt;a href=&quot;&#x2F;docs&#x2F;getting-started&#x2F;deploy&#x2F;&quot;&gt;部署模式&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;建议：提供更多的资源以应对用户访问高峰&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dan-jie-dian&quot;&gt;单节点&lt;&#x2F;h3&gt;
+&lt;p&gt;适用环境：POC、测试环境。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;机器数量: 1&lt;&#x2F;em&gt; &lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;资源配置:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;配置&lt;&#x2F;th&gt;&lt;th&gt;CPU&lt;&#x2F;th&gt;&lt;th&gt;内存&lt;&#x2F;th&gt;&lt;th&gt;储存空间&lt;&#x2F;th&gt;&lt;th&gt;部署服务&lt;&#x2F;th&gt;&lt;th&gt;TPS&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;最低配置&lt;&#x2F;td&gt;&lt;td&gt;4 核&lt;&#x2F;td&gt;&lt;td&gt;8 GB&lt;&#x2F;td&gt;&lt;td&gt;100 GB&lt;&#x2F;td&gt;&lt;td&gt;数据库、缓存和FinClip微服务&lt;&#x2F;td&gt;&lt;td&gt;5k&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;推荐配置&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;200 GB&lt;&#x2F;td&gt;&lt;td&gt;数据库、缓存和FinClip微服务&lt;&#x2F;td&gt;&lt;td&gt;8k&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;&lt;strong&gt;系统:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;芯片架构: X86&lt;&#x2F;li&gt;
+&lt;li&gt;操作系统: CentOS 7.9 或 Ubuntu 22.04 、 KylinOS V10 等&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;软件:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;访问端口： 8000 &lt;&#x2F;li&gt;
+&lt;li&gt;软件： docker 、docker compose&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;hr &#x2F;&gt;
+&lt;h3 id=&quot;xiao-gui-mo-ji-qun&quot;&gt;小规模集群&lt;&#x2F;h3&gt;
+&lt;p&gt;适用环境：小规模生产环境。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;机器数量: 4～5&lt;&#x2F;em&gt; &lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;资源配置:&lt;&#x2F;strong&gt;
+小规模集群将采用 Kubernetes 的方式部署，所需的配置可以参考下表▼：&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;用途&lt;&#x2F;th&gt;&lt;th&gt;CPU&lt;&#x2F;th&gt;&lt;th&gt;内存&lt;&#x2F;th&gt;&lt;th&gt;储存空间&lt;&#x2F;th&gt;&lt;th&gt;数量&lt;&#x2F;th&gt;&lt;th&gt;参考 TPS&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;业务服务&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;500 GB&lt;&#x2F;td&gt;&lt;td&gt;4 台&lt;&#x2F;td&gt;&lt;td&gt;3w&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;运维管理(可选)&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;500 GB&lt;&#x2F;td&gt;&lt;td&gt;1 台&lt;&#x2F;td&gt;&lt;td&gt;-&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;&lt;strong&gt;系统:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;芯片架构: X86&lt;&#x2F;li&gt;
+&lt;li&gt;操作系统: CentOS 7.9 或 Ubuntu 22.04 、 KylinOS V10 等&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;软件:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;访问端口： 80、443 &lt;&#x2F;li&gt;
+&lt;li&gt;软件： docker 、docker compose&lt;&#x2F;li&gt;
+&lt;li&gt;（建议）域名、HTTPS证书&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;hr &#x2F;&gt;
+&lt;h3 id=&quot;zhong-da-gui-mo-ji-qun&quot;&gt;中大规模集群&lt;&#x2F;h3&gt;
+&lt;p&gt;适用环境：较大用户量访问的生产环境。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;机器数量: 8～9&lt;&#x2F;em&gt; &lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;大规模集群将采用 Kubernetes 的方式部署，所需的配置可以参考下表(磁盘建议使用SSD)▼：&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;用途&lt;&#x2F;th&gt;&lt;th&gt;CPU&lt;&#x2F;th&gt;&lt;th&gt;内存&lt;&#x2F;th&gt;&lt;th&gt;储存空间&lt;&#x2F;th&gt;&lt;th&gt;数量&lt;&#x2F;th&gt;&lt;th&gt;参考 TPS&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;业务服务&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;500 GB&lt;&#x2F;td&gt;&lt;td&gt;8 台&lt;&#x2F;td&gt;&lt;td&gt;6w&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;运维管理&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;500 GB&lt;&#x2F;td&gt;&lt;td&gt;1 台&lt;&#x2F;td&gt;&lt;td&gt;-&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;系统:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;芯片架构: X86&lt;&#x2F;li&gt;
+&lt;li&gt;操作系统: CentOS 7.9 或 Ubuntu 22.04 、 KylinOS V10 等&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;软件:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;访问端口： 80、443 &lt;&#x2F;li&gt;
+&lt;li&gt;软件： docker 、docker compose&lt;&#x2F;li&gt;
+&lt;li&gt;（建议）域名、HTTPS证书&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>服务编排</title>
+        <published>2021-05-01T08:00:00+00:00</published>
+        <updated>2021-05-01T08:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devops.finclip.com/docs/ops/orchestration/" type="text/html"/>
+        <id>https://devops.finclip.com/docs/ops/orchestration/</id>
+        
+        <content type="html">&lt;p&gt; FinClip后端服务编排以及服务的生命周期管理。其中包括业务服务务采用容器化部署，通过Kubernetes做服部 署上线、故障恢复、扩容&#x2F;缩容、滚动更新等操作。借助Kubernetes提供的运维能力，我们可以实现业务的管理灵 活性、高可用性和可扩展性。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;kubernetes&quot;&gt;Kubernetes&lt;&#x2F;h3&gt;
+&lt;p&gt; Kubernetes是一款开源的容器管理引擎。它提供容器的部署、生命周期维护、高可用等功能。以下是 Kubernetes集群架构图，其中:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;etcd是集群存储，用于存储集群所有的状态数据 &lt;&#x2F;li&gt;
+&lt;li&gt;APIServer作为API总入口，接受所有其他组件的请求以操作&lt;&#x2F;li&gt;
+&lt;li&gt;etcd Scheduler用于评估调度策略&lt;&#x2F;li&gt;
+&lt;li&gt;Controller-Manager是集群对象管理器 &lt;&#x2F;li&gt;
+&lt;li&gt;Kubectl和Kube-Proxy部署在计算节点中，从而管理节点上运行的容器服务&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;kubernetes-architecture.png&quot;  width=&quot;800&quot; &#x2F;&gt;
+</content>
+        
+    </entry>
+</feed>

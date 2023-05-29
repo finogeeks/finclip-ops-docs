@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" as="font" href="https://devops.finclip.com/fonts/vendor/jost/jost-v4-latin-regular.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="https://devops.finclip.com/fonts/vendor/jost/jost-v4-latin-700.woff2"  type="font/woff2" crossorigin>
+
+
+<link rel="stylesheet" href="https://devops.finclip.com/main.css">
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+  
+  
+  
+    
+  
+  
+  
+  
+    
+  
+  
+  
+
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+
+	
+
+
+	
+
+<title>服务编排 | FinClip 运维文档</title>
+<meta name="description" content="FinClip小程序平台运维文档， 架构介绍以及技术说明。">
+<link rel="canonical" href="https://devops.finclip.com/docs/ops/orchestration/">
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          {
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Home",
+            "item": "https://devops.finclip.com/"
+          },
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  2 ,
+            "name": "Docs",
+            "item": "https://devops.finclip.com/docs/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  3 ,
+            "name": "Ops",
+            "item": "https://devops.finclip.com/docs/ops/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  4 ,
+            "name": "Orchestration",
+            "item": "https://devops.finclip.com/docs/ops/orchestration/"
+          },
+        
+      
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="theme-color" content="#fff">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://devops.finclip.com/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://devops.finclip.com/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://devops.finclip.com/favicon-16x16.png">
+  
+    <link rel="manifest" href="https://devops.finclip.com/site.webmanifest" crossorigin>
+  
+
+
+  
+
+</head>
+
+  
+
+<body class="docs single">
+  
+  
+  
+  
+<div class="header-bar fixed-top"></div>
+<header class="navbar fixed-top navbar-expand-md navbar-light">
+	<div class="container">
+		<input class="menu-btn order-0" type="checkbox" id="menu-btn">
+		<label class="menu-icon d-md-none" for="menu-btn"><span class="navicon"></span></label>
+		<a class="navbar-brand order-1 order-md-0 me-auto" href="https://devops.finclip.com"><img src="/logo.png" style="width:200px;"></a>
+		<button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="Toggle mode">
+			<span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+			<span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+		</button>
+		<ul class="navbar-nav fork-me order-3 order-md-5">
+			
+				
+					<li class="nav-item">
+						<a class="nav-link" href="https://github.com/finogeeks/finclip-ops-docs"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ms-2 visually-hidden">GitHub</span></a>
+					</li>
+				
+			
+		</ul>
+		<div class="collapse navbar-collapse order-4 order-md-1">
+			<ul class="navbar-nav main-nav me-auto order-5 order-md-2">
+				
+					
+				
+				
+				
+					
+						<li class="nav-item docs active">
+							<a class="nav-link" href="https://devops.finclip.com/docs/deploy/introduction/">文档</a>
+						</li>
+					
+						<li class="nav-item">
+							<a class="nav-link" href="https://devops.finclip.com/blog/">博客</a>
+						</li>
+					
+				
+			</ul>
+			<div class="break order-6 d-md-none"></div>
+			
+				<form class="navbar-form flex-grow-1 order-7 order-md-3">
+					<input id="userinput" class="form-control is-search" type="search" placeholder="Search docs..."
+						aria-label="Search docs..." autocomplete="off">
+					<div id="suggestions" class="shadow bg-white rounded"></div>
+				</form>
+			
+		</div>
+	</div>
+</header>
+
+
+
+  
+<div class="wrap container" role="document">
+  <div class="content">
+    <div class="row flex-xl-nowrap">
+	  
+<div class="col-lg-5 col-xl-4 docs-sidebar">
+	<nav class="docs-links" aria-label="Main navigation">
+			
+			
+			
+			
+					
+					
+					
+							<h3>运维部署</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/deploy/introduction/">概述</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/deploy/requirements/">资源需求</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/deploy/deploy/">部署模式</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>参考说明</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/reference/architecture/">运维架构</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/reference/servicelist/">业务组件</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>运行维护</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link active" href="https://devops.finclip.com/docs/ops/orchestration/">服务编排</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/monitoring/">监控系统</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/logging/">日志系统</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/availability/">可用性</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/scalability/">可扩展性</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/security/">安全性</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/ops/performance/">性能优化</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>运维笔记</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/notes/docker-offline/">Docker离线安装</a></li>
+							                           
+									<li><a class="docs-link" href="https://devops.finclip.com/docs/notes/update-license/">License更新</a></li>
+							
+					</ul>
+					
+					
+			
+	</nav>
+</div>
+
+	  
+  
+
+      <main class="docs-content col-xl-10">
+        <h1>服务编排</h1>
+        
+        <p> FinClip后端服务编排以及服务的生命周期管理。其中包括业务服务务采用容器化部署，通过Kubernetes做服部 署上线、故障恢复、扩容/缩容、滚动更新等操作。借助Kubernetes提供的运维能力，我们可以实现业务的管理灵 活性、高可用性和可扩展性。</p>
+<h3 id="kubernetes">Kubernetes</h3>
+<p> Kubernetes是一款开源的容器管理引擎。它提供容器的部署、生命周期维护、高可用等功能。以下是 Kubernetes集群架构图，其中:</p>
+<ul>
+<li>etcd是集群存储，用于存储集群所有的状态数据 </li>
+<li>APIServer作为API总入口，接受所有其他组件的请求以操作</li>
+<li>etcd Scheduler用于评估调度策略</li>
+<li>Controller-Manager是集群对象管理器 </li>
+<li>Kubectl和Kube-Proxy部署在计算节点中，从而管理节点上运行的容器服务</li>
+</ul>
+<img src="/images/kubernetes-architecture.png"  width="800" />
+
+        
+        
+<div class="docs-navigation d-flex justify-content-between">
+  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+            
+              
+              <a href="https:&#x2F;&#x2F;devops.finclip.com&#x2F;docs&#x2F;reference&#x2F;servicelist&#x2F;">
+                <div class="card my-1">
+                  <div class="card-body py-2">
+                    &larr; 业务组件
+                  </div>
+                </div>
+              </a>
+            
+            
+            
+          
+        
+      
+        
+        
+          
+        
+      
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+          
+          
+          <a class="ms-auto" href="https:&#x2F;&#x2F;devops.finclip.com&#x2F;docs&#x2F;notes&#x2F;docker-offline&#x2F;">
+            <div class="card my-1">
+              <div class="card-body py-2">
+                Docker离线安装 &rarr;
+              </div>
+            </div>
+          </a>
+          
+          
+          
+        
+      
+    
+  
+</div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+
+  
+    
+<footer class="footer text-muted">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 order-last order-lg-first">
+				<ul class="list-inline">
+					
+						<li class="list-inline-item">Powered by <a href="https://www.finogeeks.com/">Finogeeks</a> and <a href="https://www.finclip.com/">FinClip</a></li>
+					
+				</ul>
+			</div>
+			<div class="col-lg-8 order-first order-lg-last text-lg-end">
+				<ul class="list-inline">
+					
+						
+							<li class="list-inline-item"><a href="https://www.finclip.com/terms">服务协议</a></li>
+						
+							<li class="list-inline-item"><a href="https://www.finclip.com/blog">产品博客</a></li>
+						
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+
+  
+
+  
+<script type="text/javascript" src="https://devops.finclip.com/js/main.js" defer></script>
+
+  <script type="text/javascript" src="https://devops.finclip.com/plugins/elasticlunr.min.js" defer></script>
+  <script type="text/javascript" src="https://devops.finclip.com/search_index.en.js" defer></script>
+  <script type="text/javascript" src="https://devops.finclip.com/js/search.js" defer></script>
+
+  
+</body>
+</html>
