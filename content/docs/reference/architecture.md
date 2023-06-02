@@ -17,4 +17,4 @@ FinClip 后端服务采用 Golang 语言编写，系统架构采用微服务架�
 ### 架构拓扑：
 
 
-<img src="/images/finclip-ops-arch.png"  width="800" />
+<img src="/images/finclip-arch.png"  width="800" />
