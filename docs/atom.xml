@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title>FinClip 运维文档</title>
     <subtitle>FinClip小程序平台运维文档， 架构介绍以及技术说明。</subtitle>
-    <link href="https://devops.finclip.com/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://devops.finclip.com"/>
+    <link rel="self" type="application/atom+xml" href="https://devops.finclip.com/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://devops.finclip.com"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2023-05-29T08:50:45+00:00</updated>
     <id>https://devops.finclip.com/atom.xml</id>
@@ -11,13 +11,19 @@
         <title>yehong</title>
         <published>2023-05-29T08:50:45+00:00</published>
         <updated>2023-05-29T08:50:45+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://devops.finclip.com/authors/yehong/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://devops.finclip.com/authors/yehong/"/>
         <id>https://devops.finclip.com/authors/yehong/</id>
         
-        <content type="html">&lt;p&gt;DevOps @Finogeeks&lt;&#x2F;p&gt;
+        <content type="html" xml:base="https://devops.finclip.com/authors/yehong/">&lt;p&gt;DevOps @Finogeeks&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;yangyehong&quot;&gt;@yehong&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 </content>
         
@@ -26,13 +32,19 @@
         <title>frp实现内网穿透</title>
         <published>2023-05-29T00:00:00+00:00</published>
         <updated>2023-05-29T00:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://devops.finclip.com/blog/frp/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://devops.finclip.com/blog/frp/"/>
         <id>https://devops.finclip.com/blog/frp/</id>
         
-        <content type="html">&lt;p&gt;&lt;strong&gt;项目地址：&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+        <content type="html" xml:base="https://devops.finclip.com/blog/frp/">&lt;p&gt;&lt;strong&gt;项目地址：&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;gong-neng&quot;&gt;功能&lt;&#x2F;h3&gt;
 &lt;p&gt;通过frp，使处于内网或无固定公网ip的机器，对外网环境提供 tcp 和 udp 服务，例如在家里通过 ssh 访问处于公司内网环境内的主机&lt;&#x2F;p&gt;
@@ -88,13 +100,19 @@
         <title>部署模式</title>
         <published>2021-05-01T08:00:00+00:00</published>
         <updated>2021-05-02T08:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://devops.finclip.com/docs/deploy/deploy/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://devops.finclip.com/docs/deploy/deploy/"/>
         <id>https://devops.finclip.com/docs/deploy/deploy/</id>
         
-        <content type="html">&lt;h3 id=&quot;jian-jie&quot;&gt;简介&lt;&#x2F;h3&gt;
+        <content type="html" xml:base="https://devops.finclip.com/docs/deploy/deploy/">&lt;h3 id=&quot;jian-jie&quot;&gt;简介&lt;&#x2F;h3&gt;
 &lt;p&gt;  在业务系统运行之前，我们需要针对业务架构进行规划。我们希望小程序平台在满足业务用户访问的同时，尽可能节省服务器和网络资源，同时，对于业务生产环境，我们还会通过架构优化调整，以提升系统的可用性、扩展性和可维护性。&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;dan-jie-dian&quot;&gt;单节点&lt;&#x2F;h3&gt;
 &lt;p&gt;  在产品功能验证(POC)和测试环节，我们通常希望快速体验小程序平台功能，在这种情况下，简便快速的部署是最合理的交付方式，FinClip小程序数字化管理系统支持单节点部署模式，顾名思义，单节点部署模式就是将所有后台服务运行在一台服务器中，单节点的部署架构适合做测试环境，由于小程序平台采用高性能的编程语言构建，单节点部署也能支撑一定量的用户访问，因此，这种部署模式也适用于对容灾没有要求，或整体业务规模较小的客户使用。&lt;&#x2F;p&gt;
@@ -167,13 +185,19 @@
         <title>概述</title>
         <published>2021-05-01T08:00:00+00:00</published>
         <updated>2021-05-01T08:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://devops.finclip.com/docs/deploy/introduction/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://devops.finclip.com/docs/deploy/introduction/"/>
         <id>https://devops.finclip.com/docs/deploy/introduction/</id>
         
-        <content type="html">&lt;&#x2F;br&gt;
+        <content type="html" xml:base="https://devops.finclip.com/docs/deploy/introduction/">&lt;&#x2F;br&gt;
 &lt;p&gt;本文档项目旨在提供全面的FinClip运维手册，尽可能涉及FinClip运行维护的方方面面。&lt;&#x2F;p&gt;
 &lt;p&gt;手册主要描述运维部署架构和日常维护事项，也包含部分应急处理与运维相关技术知识。&lt;&#x2F;p&gt;
 &lt;p&gt;比如：&lt;&#x2F;p&gt;
@@ -190,13 +214,19 @@
         <title>资源需求</title>
         <published>2021-05-01T08:00:00+00:00</published>
         <updated>2021-05-02T08:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://devops.finclip.com/docs/deploy/requirements/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://devops.finclip.com/docs/deploy/requirements/"/>
         <id>https://devops.finclip.com/docs/deploy/requirements/</id>
         
-        <content type="html">&lt;h3 id=&quot;jian-jie&quot;&gt;简介&lt;&#x2F;h3&gt;
+        <content type="html" xml:base="https://devops.finclip.com/docs/deploy/requirements/">&lt;h3 id=&quot;jian-jie&quot;&gt;简介&lt;&#x2F;h3&gt;
 &lt;p&gt;  在业务系统运行之前，我们需要针对业务架构进行规划。我们希望小程序平台在满足业务用户访问的同时，尽可能节省服务器和网络资源，同时，对于业务生产环境，我们还会通过架构优化调整，以提升系统的可用性、扩展性和可维护性。&lt;&#x2F;p&gt;
 &lt;p&gt;以下是部署FinClip所需的推荐资源配置，每一种配置都对应着相应的部署模式，关于不同的部署模式，请参考说明：&lt;a href=&quot;&#x2F;docs&#x2F;getting-started&#x2F;deploy&#x2F;&quot;&gt;部署模式&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;em&gt;建议：提供更多的资源以应对用户访问高峰&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
@@ -205,8 +235,8 @@
 &lt;p&gt;&lt;em&gt;机器数量: 1&lt;&#x2F;em&gt; &lt;&#x2F;p&gt;
 &lt;p&gt;&lt;strong&gt;资源配置:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
 &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;配置&lt;&#x2F;th&gt;&lt;th&gt;CPU&lt;&#x2F;th&gt;&lt;th&gt;内存&lt;&#x2F;th&gt;&lt;th&gt;储存空间&lt;&#x2F;th&gt;&lt;th&gt;部署服务&lt;&#x2F;th&gt;&lt;th&gt;TPS&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
-&lt;tr&gt;&lt;td&gt;最低配置&lt;&#x2F;td&gt;&lt;td&gt;4 核&lt;&#x2F;td&gt;&lt;td&gt;8 GB&lt;&#x2F;td&gt;&lt;td&gt;100 GB&lt;&#x2F;td&gt;&lt;td&gt;数据库、缓存和FinClip微服务&lt;&#x2F;td&gt;&lt;td&gt;5k&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
-&lt;tr&gt;&lt;td&gt;推荐配置&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;200 GB&lt;&#x2F;td&gt;&lt;td&gt;数据库、缓存和FinClip微服务&lt;&#x2F;td&gt;&lt;td&gt;8k&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;最低配置&lt;&#x2F;td&gt;&lt;td&gt;4 核&lt;&#x2F;td&gt;&lt;td&gt;8 GB&lt;&#x2F;td&gt;&lt;td&gt;100 GB&lt;&#x2F;td&gt;&lt;td&gt;数据库、缓存和FinClip微服务&lt;&#x2F;td&gt;&lt;td&gt;3k&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;推荐配置&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;200 GB&lt;&#x2F;td&gt;&lt;td&gt;数据库、缓存和FinClip微服务&lt;&#x2F;td&gt;&lt;td&gt;5k&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
 &lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
 &lt;p&gt;&lt;strong&gt;系统:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -226,7 +256,7 @@
 &lt;p&gt;&lt;strong&gt;资源配置:&lt;&#x2F;strong&gt;
 小规模集群将采用 Kubernetes 的方式部署，所需的配置可以参考下表▼：&lt;&#x2F;p&gt;
 &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;用途&lt;&#x2F;th&gt;&lt;th&gt;CPU&lt;&#x2F;th&gt;&lt;th&gt;内存&lt;&#x2F;th&gt;&lt;th&gt;储存空间&lt;&#x2F;th&gt;&lt;th&gt;数量&lt;&#x2F;th&gt;&lt;th&gt;参考 TPS&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
-&lt;tr&gt;&lt;td&gt;业务服务&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;500 GB&lt;&#x2F;td&gt;&lt;td&gt;4 台&lt;&#x2F;td&gt;&lt;td&gt;3w&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;业务服务&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;500 GB&lt;&#x2F;td&gt;&lt;td&gt;4 台&lt;&#x2F;td&gt;&lt;td&gt;1w&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
 &lt;tr&gt;&lt;td&gt;运维管理(可选)&lt;&#x2F;td&gt;&lt;td&gt;8 核&lt;&#x2F;td&gt;&lt;td&gt;16 GB&lt;&#x2F;td&gt;&lt;td&gt;500 GB&lt;&#x2F;td&gt;&lt;td&gt;1 台&lt;&#x2F;td&gt;&lt;td&gt;-&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
 &lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
 &lt;p&gt;&lt;strong&gt;系统:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
@@ -270,13 +300,19 @@
         <title>服务编排</title>
         <published>2021-05-01T08:00:00+00:00</published>
         <updated>2021-05-01T08:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://devops.finclip.com/docs/ops/orchestration/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://devops.finclip.com/docs/ops/orchestration/"/>
         <id>https://devops.finclip.com/docs/ops/orchestration/</id>
         
-        <content type="html">&lt;p&gt; FinClip后端服务编排以及服务的生命周期管理。其中包括业务服务务采用容器化部署，通过Kubernetes做服部 署上线、故障恢复、扩容&#x2F;缩容、滚动更新等操作。借助Kubernetes提供的运维能力，我们可以实现业务的管理灵 活性、高可用性和可扩展性。&lt;&#x2F;p&gt;
+        <content type="html" xml:base="https://devops.finclip.com/docs/ops/orchestration/">&lt;p&gt; FinClip后端服务编排以及服务的生命周期管理。其中包括业务服务务采用容器化部署，通过Kubernetes做服部 署上线、故障恢复、扩容&#x2F;缩容、滚动更新等操作。借助Kubernetes提供的运维能力，我们可以实现业务的管理灵 活性、高可用性和可扩展性。&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;kubernetes&quot;&gt;Kubernetes&lt;&#x2F;h3&gt;
 &lt;p&gt; Kubernetes是一款开源的容器管理引擎。它提供容器的部署、生命周期维护、高可用等功能。以下是 Kubernetes集群架构图，其中:&lt;&#x2F;p&gt;
 &lt;ul&gt;
