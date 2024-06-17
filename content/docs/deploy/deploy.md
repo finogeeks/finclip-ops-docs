@@ -24,7 +24,8 @@ top = false
 
 在单节点部署模式中，所有服务将部署在一台服务器中：
 
-![role1](/images/docker-compose.png)
+
+<img src="/images/docker-compose.png"  width="750" />
 
 
 
