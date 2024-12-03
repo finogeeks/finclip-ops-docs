@@ -1,0 +1,355 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-has-toc data-has-sidebar data-theme="dark" class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>监控指标 | </title><link rel="canonical"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v4.16.8"/><meta name="generator" content="Starlight v0.28.6"/><meta property="og:title" content="监控指标"/><meta property="og:type" content="article"/><meta property="og:url"/><meta property="og:locale" content="en"/><meta property="og:description" content="A guide in my new Starlight docs site."/><meta property="og:site_name" content=""/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="A guide in my new Starlight docs site."/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg> <svg aria-hidden="true" class="dark astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg> <svg aria-hidden="true" class="auto astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> </template><link rel="stylesheet" href="/_astro/index.CuD7qng9.css">
+<style>:root{--sl-badge-default-border: var(--sl-color-accent);--sl-badge-default-bg: var(--sl-color-accent-low);--sl-badge-default-text: #fff;--sl-badge-note-border: var(--sl-color-blue);--sl-badge-note-bg: var(--sl-color-blue-low);--sl-badge-note-text: #fff;--sl-badge-danger-border: var(--sl-color-red);--sl-badge-danger-bg: var(--sl-color-red-low);--sl-badge-danger-text: #fff;--sl-badge-success-border: var(--sl-color-green);--sl-badge-success-bg: var(--sl-color-green-low);--sl-badge-success-text: #fff;--sl-badge-caution-border: var(--sl-color-orange);--sl-badge-caution-bg: var(--sl-color-orange-low);--sl-badge-caution-text: #fff;--sl-badge-tip-border: var(--sl-color-purple);--sl-badge-tip-bg: var(--sl-color-purple-low);--sl-badge-tip-text: #fff}[data-theme=light]:root{--sl-badge-default-bg: var(--sl-color-accent-high);--sl-badge-note-bg: var(--sl-color-blue-high);--sl-badge-danger-bg: var(--sl-color-red-high);--sl-badge-success-bg: var(--sl-color-green-high);--sl-badge-caution-bg: var(--sl-color-orange-high);--sl-badge-tip-bg: var(--sl-color-purple-high)}.sl-badge:where(.astro-avdet4wd){display:inline-block;border:1px solid var(--sl-color-border-badge);border-radius:.25rem;font-family:var(--sl-font-system-mono);line-height:normal;color:var(--sl-color-text-badge);background-color:var(--sl-color-bg-badge);overflow-wrap:anywhere}.sidebar-content .sl-badge:where(.astro-avdet4wd){line-height:1;font-size:var(--sl-text-xs);padding:.125rem .375rem}.sidebar-content a[aria-current=page]>.sl-badge:where(.astro-avdet4wd){--sl-color-bg-badge: transparent;--sl-color-border-badge: currentColor;color:inherit}.default:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-default-bg);--sl-color-border-badge: var(--sl-badge-default-border);--sl-color-text-badge: var(--sl-badge-default-text)}.note:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-note-bg);--sl-color-border-badge: var(--sl-badge-note-border);--sl-color-text-badge: var(--sl-badge-note-text)}.danger:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-danger-bg);--sl-color-border-badge: var(--sl-badge-danger-border);--sl-color-text-badge: var(--sl-badge-danger-text)}.success:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-success-bg);--sl-color-border-badge: var(--sl-badge-success-border);--sl-color-text-badge: var(--sl-badge-success-text)}.tip:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-tip-bg);--sl-color-border-badge: var(--sl-badge-tip-border);--sl-color-text-badge: var(--sl-badge-tip-text)}.caution:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-caution-bg);--sl-color-border-badge: var(--sl-badge-caution-border);--sl-color-text-badge: var(--sl-badge-caution-text)}.small:where(.astro-avdet4wd){font-size:var(--sl-text-xs);padding:.125rem .25rem}.medium:where(.astro-avdet4wd){font-size:var(--sl-text-sm);padding:.175rem .35rem}.large:where(.astro-avdet4wd){font-size:var(--sl-text-base);padding:.225rem .45rem}.sl-markdown-content :is(h1,h2,h3,h4,h5,h6) .sl-badge:where(.astro-avdet4wd){vertical-align:middle}
+.card-grid:where(.astro-zntqmydn){display:grid;gap:1rem}.card-grid:where(.astro-zntqmydn)>*{margin-top:0!important}@media (min-width: 50rem){.card-grid:where(.astro-zntqmydn){grid-template-columns:1fr 1fr;gap:1.5rem}.stagger:where(.astro-zntqmydn){--stagger-height: 5rem;padding-bottom:var(--stagger-height)}.stagger:where(.astro-zntqmydn)>*:nth-child(2n){transform:translateY(var(--stagger-height))}}
+.card:where(.astro-v5tidmuc){--sl-card-border: var(--sl-color-purple);--sl-card-bg: var(--sl-color-purple-low);border:1px solid var(--sl-color-gray-5);background-color:var(--sl-color-black);padding:clamp(1rem,calc(.125rem + 3vw),2.5rem);flex-direction:column;gap:clamp(.5rem,calc(.125rem + 1vw),1rem)}.card:where(.astro-v5tidmuc):nth-child(4n+1){--sl-card-border: var(--sl-color-orange);--sl-card-bg: var(--sl-color-orange-low)}.card:where(.astro-v5tidmuc):nth-child(4n+3){--sl-card-border: var(--sl-color-green);--sl-card-bg: var(--sl-color-green-low)}.card:where(.astro-v5tidmuc):nth-child(4n+4){--sl-card-border: var(--sl-color-red);--sl-card-bg: var(--sl-color-red-low)}.card:where(.astro-v5tidmuc):nth-child(4n+5){--sl-card-border: var(--sl-color-blue);--sl-card-bg: var(--sl-color-blue-low)}.title:where(.astro-v5tidmuc){font-weight:600;font-size:var(--sl-text-h4);color:var(--sl-color-white);line-height:var(--sl-line-height-headings);gap:1rem;align-items:center}.card:where(.astro-v5tidmuc) .icon:where(.astro-v5tidmuc){border:1px solid var(--sl-card-border);background-color:var(--sl-card-bg);padding:.2em;border-radius:.25rem}.card:where(.astro-v5tidmuc) .body:where(.astro-v5tidmuc){margin:0;font-size:clamp(var(--sl-text-sm),calc(.5rem + 1vw),var(--sl-text-body))}
+svg:where(.astro-c6vsoqas){color:var(--sl-icon-color);font-size:var(--sl-icon-size, 1em);width:1em;height:1em}
+.sl-steps{--bullet-size: calc(var(--sl-line-height) * 1rem);--bullet-margin: .375rem;list-style:none;counter-reset:steps-counter var(--sl-steps-start, 0);padding-inline-start:0}.sl-steps>li{counter-increment:steps-counter;position:relative;padding-inline-start:calc(var(--bullet-size) + 1rem);padding-bottom:1px;min-height:calc(var(--bullet-size) + var(--bullet-margin))}.sl-steps>li+li{margin-top:0}.sl-steps>li:before{content:counter(steps-counter);position:absolute;top:0;inset-inline-start:0;width:var(--bullet-size);height:var(--bullet-size);line-height:var(--bullet-size);font-size:var(--sl-text-xs);font-weight:600;text-align:center;color:var(--sl-color-white);background-color:var(--sl-color-gray-6);border-radius:99rem;box-shadow:inset 0 0 0 1px var(--sl-color-gray-5)}.sl-steps>li:after{--guide-width: 1px;content:"";position:absolute;top:calc(var(--bullet-size) + var(--bullet-margin));bottom:var(--bullet-margin);inset-inline-start:calc((var(--bullet-size) - var(--guide-width)) / 2);width:var(--guide-width);background-color:var(--sl-color-hairline-light)}.sl-steps>li>:first-child{--lh: calc(1em * var(--sl-line-height));--shift-y: calc(.5 * (var(--bullet-size) - var(--lh)));transform:translateY(var(--shift-y));margin-bottom:var(--shift-y)}.sl-steps>li>:first-child:where(h1,h2,h3,h4,h5,h6){--lh: calc(1em * var(--sl-line-height-headings))}@supports (--prop: 1lh){.sl-steps>li>:first-child{--lh: 1lh}}
+.sl-link-button:where(.astro-xwgiixxa){align-items:center;border:1px solid transparent;border-radius:999rem;display:inline-flex;font-size:var(--sl-text-sm);gap:.5em;line-height:1.1875;outline-offset:.25rem;padding:.4375rem 1.125rem;text-decoration:none}.sl-link-button:where(.astro-xwgiixxa).primary{background:var(--sl-color-text-accent);border-color:var(--sl-color-text-accent);color:var(--sl-color-black)}.sl-link-button:where(.astro-xwgiixxa).primary:hover{color:var(--sl-color-black)}.sl-link-button:where(.astro-xwgiixxa).secondary{border-color:inherit;color:var(--sl-color-white)}.sl-link-button:where(.astro-xwgiixxa).minimal{color:var(--sl-color-white);padding-inline:0}.sl-link-button:where(.astro-xwgiixxa) svg{flex-shrink:0}@media (min-width: 50rem){.sl-link-button:where(.astro-xwgiixxa){font-size:var(--sl-text-base);padding:.9375rem 1.25rem}}.sl-markdown-content .sl-link-button:where(.astro-xwgiixxa){margin-inline-end:1rem}.sl-markdown-content .sl-link-button:where(.astro-xwgiixxa):not(:where(p *)){margin-block:1rem}
+</style><script type="module" src="/_astro/hoisted.C_TFCdiL.js"></script>
+<script type="module" src="/_astro/page.7qqag-5g.js"></script></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">Skip to content</a>  <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><div class="header sl-flex astro-kmkmnagf"> <div class="title-wrapper sl-flex astro-kmkmnagf"> <a href="/" class="site-title sl-flex astro-m46x6ez3">  <img class="astro-m46x6ez3" alt="" src="/_astro/logo.C1pnyETI.png" width="590" height="72">  <span class="astro-m46x6ez3">  </span> </a>  </div> <div class="sl-flex astro-kmkmnagf"> <site-search data-translations="{&#34;placeholder&#34;:&#34;Search&#34;}" class="astro-v37mnknz"> <button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg>  <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">Search</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="Search" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> Cancel </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script>    </div> <div class="sl-hidden md:sl-flex right-group astro-kmkmnagf"> <div class="sl-flex social-icons astro-kmkmnagf"> <a href="https://github.com/finogeeks" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">GitHub</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg> </a> </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">Select theme</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg>  <select value="auto" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">Dark</option><option value="light" class="astro-4yphtoen">Light</option><option value="auto" selected class="astro-4yphtoen">Auto</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg>  </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script>   </div> </div> </header> <nav class="sidebar astro-vrdttmbt" aria-label="Main"> <starlight-menu-button class="astro-jif73yzw"> <button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg>  </button> </starlight-menu-button>    <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <sl-sidebar-state-persist data-hash="1tg4jxw" class="astro-kku4brbg"> <script>
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">概述</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg>  </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/overview/01_product_intro/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">产品简介</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/overview/02_use_case/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">适用场景</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">快速入门</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg>  </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/quickstart/01_prerequisites/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">部署准备</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/quickstart/02_quick_installation/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">快速安装指南</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/quickstart/03_basic_configuration/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">基础配置</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/quickstart/04_test_function/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">功能测试</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">部署指南</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg>  </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/deployment/01_architecture_overview/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">架构说明</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/deployment/02_setup/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">准备和规划</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/deployment/03_installation_steps/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">安装步骤</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/deployment/04_upgrade/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">升级流程</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/deployment/05_rollback_and_backup/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">备份和回滚</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/deployment/06_deployment_components/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">部署组件</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="3"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">配置管理</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg>  </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/config/01_business_configuration/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">业务配置</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/config/02_ops_configuration/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">运维配置</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/config/03_update_and_restart/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">更新操作</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="4"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">操作手册</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg>  </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/operations/01_routine_operations/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">日常操作</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/operations/02_database_import_export/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">数据备份和恢复</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/operations/03_license_update/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">更新 License</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/operations/04_docker_registry/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">镜像仓库</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="5"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">监控和日志</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg>  </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/monitoring/01_monitoring/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">监控系统</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/monitoring/02_metrics/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">监控指标</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/monitoring/03_logging/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">日志系统</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="6"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">故障排查</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg>  </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/troubleshoot/01_health_check/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">服务健康检查</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/troubleshoot/02_accessibility/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">访问链路检查</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/troubleshoot/03_logs/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">服务日志查看</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="7"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">性能优化</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg>  </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/performance/01_database/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">数据库调优</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="8"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">安全指南</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg>  </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/security/01_system_security/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">系统安全配置</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="9"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">维护计划</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg>  </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/maintenance/01_patrol/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">运维巡检</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="10"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">附录</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg>  </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/appendix/01_contact_information/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">联系方式</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/appendix/02_reference/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">参考资料</span>  </a> </li> </ul>  </details> </li> </ul>   <script>
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="sl-flex social-icons astro-wu23bvmt"> <a href="https://github.com/finogeeks" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">GitHub</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg> </a> </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">Select theme</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg>  <select value="auto" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">Dark</option><option value="light" class="astro-4yphtoen">Light</option><option value="auto" selected class="astro-4yphtoen">Auto</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg>  </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">   <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">On this page<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#主机相关指标" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">主机相关指标</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-cpu" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. CPU</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-内存" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. 内存</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-磁盘" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. 磁盘</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4-网络" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4. 网络</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5-进程" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5. 进程</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#k8s-相关指标" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">K8S 相关指标</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-pod-和容器" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. Pod 和容器</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-调度和资源分配" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. 调度和资源分配</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-控制器和副本" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. 控制器和副本</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4-api服务" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4. API服务</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5-网络和负载" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5. 网络和负载</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#6-存储" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">6. 存储</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#redis-相关指标" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Redis 相关指标</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-资源使用" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. 资源使用</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-键值操作" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. 键值操作</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-持久化" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. 持久化</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4-集群和复制" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4. 集群和复制</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5-网络" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5. 网络</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#6-慢查询" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">6. 慢查询</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#mysql-相关指标" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">MySQL 相关指标</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-资源使用-1" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. 资源使用</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-连接数" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. 连接数</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-查询性能" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. 查询性能</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4-缓存相关指标" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4. 缓存相关指标</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5-复制相关指标" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5. 复制相关指标</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#6-innodb" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">6. InnoDB</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#minio-相关指标" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">MinIO 相关指标</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-资源使用-2" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. 资源使用</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-请求和吞吐量" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. 请求和吞吐量</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-网络" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. 网络</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4-错误和异常" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4. 错误和异常</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5-健康和状态" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5. 健康和状态</span> </a>  </li> </ul>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#主机相关指标" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">主机相关指标</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-cpu" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. CPU</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-内存" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. 内存</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-磁盘" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. 磁盘</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4-网络" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4. 网络</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5-进程" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5. 进程</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#k8s-相关指标" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">K8S 相关指标</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-pod-和容器" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. Pod 和容器</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-调度和资源分配" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. 调度和资源分配</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-控制器和副本" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. 控制器和副本</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4-api服务" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4. API服务</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5-网络和负载" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5. 网络和负载</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#6-存储" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">6. 存储</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#redis-相关指标" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Redis 相关指标</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-资源使用" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. 资源使用</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-键值操作" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. 键值操作</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-持久化" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. 持久化</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4-集群和复制" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4. 集群和复制</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5-网络" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5. 网络</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#6-慢查询" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">6. 慢查询</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#mysql-相关指标" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">MySQL 相关指标</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-资源使用-1" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. 资源使用</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-连接数" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. 连接数</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-查询性能" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. 查询性能</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4-缓存相关指标" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4. 缓存相关指标</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5-复制相关指标" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5. 复制相关指标</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#6-innodb" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">6. InnoDB</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#minio-相关指标" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">MinIO 相关指标</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-资源使用-2" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. 资源使用</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-请求和吞吐量" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. 请求和吞吐量</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-网络" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. 网络</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4-错误和异常" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4. 错误和异常</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5-健康和状态" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5. 健康和状态</span> </a>  </li> </ul>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body lang="en" dir="ltr" class="astro-bguv2lll">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">监控指标</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <h2 id="主机相关指标">主机相关指标</h2>
+<h3 id="1-cpu">1. <strong>CPU</strong></h3>
+<ul>
+<li><strong>CPU使用率（CPU Utilization）</strong>：监控CPU的总使用率和各核心使用率。高使用率可能表明负载过重。</li>
+<li><strong>系统占用率（System CPU Usage）</strong>：表示操作系统内核占用的CPU时间，持续过高可能需要关注系统进程和配置。</li>
+<li><strong>用户占用率（User CPU Usage）</strong>：表示用户进程占用的CPU时间，帮助评估应用对CPU的需求。</li>
+<li><strong>CPU等待时间（IO Wait）</strong>：CPU等待磁盘或网络I/O操作完成的时间，较高的I/O等待可能意味着磁盘或网络瓶颈。</li>
+</ul>
+<h3 id="2-内存">2. <strong>内存</strong></h3>
+<ul>
+<li><strong>内存使用率（Memory Usage）</strong>：当前内存使用量，帮助识别内存消耗情况。高使用率可能导致性能下降。</li>
+<li><strong>可用内存（Available Memory）</strong>：系统剩余内存量，低可用内存可能表明系统接近内存上限。</li>
+<li><strong>缓存内存（Cached Memory）</strong>：操作系统用作缓存的内存量，有助于提高文件和块设备的访问速度。</li>
+</ul>
+<h3 id="3-磁盘">3. <strong>磁盘</strong></h3>
+<ul>
+<li><strong>磁盘使用率（Disk Usage）</strong>：磁盘分区的使用情况，帮助监控磁盘空间是否充足。</li>
+<li><strong>磁盘读写速率（Disk Read/Write Rate）</strong>：每秒的磁盘读取和写入字节数，表示I/O活跃度。</li>
+<li><strong>磁盘I/O等待时间（Disk IO Wait Time）</strong>：等待磁盘I/O操作完成的时间。高I/O等待时间可能表明磁盘性能不足。</li>
+<li><strong>磁盘I/O操作次数（Disk IO Operations）</strong>：每秒读写操作的次数，帮助识别I/O瓶颈。</li>
+</ul>
+<h3 id="4-网络">4. <strong>网络</strong></h3>
+<ul>
+<li><strong>网络吞吐量（Network Throughput）</strong>：每秒传输的数据量，包括入网（接收）和出网（发送），帮助了解网络带宽的使用情况。</li>
+<li><strong>网络延迟（Network Latency）</strong>：数据在网络中的传输时间，延迟增加可能表明网络拥堵或带宽不足。</li>
+<li><strong>丢包率（Packet Loss）</strong>：数据包传输过程中丢失的比例，高丢包率通常表明网络问题。</li>
+<li><strong>网络连接数（Network Connections）</strong>：活跃的TCP/UDP连接数，帮助识别网络连接的使用情况。</li>
+</ul>
+<h3 id="5-进程">5. <strong>进程</strong></h3>
+<ul>
+<li><strong>关键进程CPU和内存占用</strong>：监控关键进程的CPU和内存使用情况，及时发现异常消耗资源的进程。</li>
+<li><strong>进程运行时间（Process Uptime）</strong>：记录进程的持续运行时间，有助于发现进程的重启或异常终止。</li>
+</ul>
+<h2 id="k8s-相关指标">K8S 相关指标</h2>
+<h3 id="1-pod-和容器">1. <strong>Pod 和容器</strong></h3>
+<ul>
+<li>
+<p><strong>container_cpu_usage_seconds_total</strong>: 容器的CPU使用时间（秒）。</p>
+</li>
+<li>
+<p><strong>container_memory_usage_bytes</strong>: 容器使用的内存（字节）。</p>
+</li>
+<li>
+<p><strong>container_memory_working_set_bytes</strong>: 容器正在使用的内存，不包括缓存。</p>
+</li>
+<li>
+<p><strong>container_fs_usage_bytes</strong>: 容器使用的磁盘空间（字节）。</p>
+</li>
+<li>
+<p><strong>container_last_seen</strong>: 容器最后一次被检查的时间。</p>
+</li>
+<li>
+<p><strong>container_start_time_seconds</strong>: 容器的启动时间戳（秒）。</p>
+</li>
+<li>
+<p><strong>kube_pod_status_phase</strong>: Pod的当前状态（Running、Pending、Succeeded、Failed、Unknown）。</p>
+</li>
+<li>
+<p><strong>kube_pod_container_status_restarts_total</strong>: Pod容器的重启次数。</p>
+</li>
+<li>
+<p><strong>kube_pod_container_status_running</strong>: Pod容器是否正在运行。</p>
+</li>
+<li>
+<p><strong>kube_pod_container_status_terminated</strong>: Pod容器是否已终止。</p>
+</li>
+<li>
+<p><strong>kube_pod_container_status_waiting</strong>: Pod容器是否处于等待状态。</p>
+</li>
+</ul>
+<h3 id="2-调度和资源分配">2. <strong>调度和资源分配</strong></h3>
+<ul>
+<li><strong>kube_pod_container_resource_requests_cpu_cores</strong>: Pod容器请求的CPU资源（核）。</li>
+<li><strong>kube_pod_container_resource_requests_memory_bytes</strong>: Pod容器请求的内存资源（字节）。</li>
+<li><strong>kube_pod_container_resource_limits_cpu_cores</strong>: Pod容器的CPU限制（核）。</li>
+<li><strong>kube_pod_container_resource_limits_memory_bytes</strong>: Pod容器的内存限制（字节）。</li>
+<li><strong>kube_node_status_capacity_cpu_cores</strong>: 节点的CPU总容量（核）。</li>
+<li><strong>kube_node_status_capacity_memory_bytes</strong>: 节点的内存总容量（字节）。</li>
+<li><strong>kube_node_status_allocatable_cpu_cores</strong>: 节点的可分配CPU容量（核）。</li>
+<li><strong>kube_node_status_allocatable_memory_bytes</strong>: 节点的可分配内存容量（字节）。</li>
+</ul>
+<h3 id="3-控制器和副本">3. <strong>控制器和副本</strong></h3>
+<ul>
+<li><strong>kube_deployment_status_replicas</strong>: Deployment的当前副本数。</li>
+<li><strong>kube_deployment_status_replicas_updated</strong>: 已更新的Deployment副本数。</li>
+<li><strong>kube_replica_set_status_replicas</strong>: ReplicaSet的副本数。</li>
+<li><strong>kube_replica_set_status_replicas_available</strong>: 可用的ReplicaSet副本数。</li>
+<li><strong>kube_statefulset_status_replicas</strong>: StatefulSet的副本数。</li>
+<li><strong>kube_statefulset_status_replicas_available</strong>: 可用的StatefulSet副本数。</li>
+</ul>
+<h3 id="4-api服务">4. <strong>API服务</strong></h3>
+<ul>
+<li><strong>apiserver_request_duration_seconds</strong>: API服务器处理请求的时间（秒）。</li>
+<li><strong>apiserver_request_count</strong>: API服务器处理的请求总数。</li>
+<li><strong>apiserver_request_latencies_seconds</strong>: API服务器请求的延迟分布。</li>
+<li><strong>controller_manager_reconcile_duration_seconds</strong>: 控制器管理器的重新调度时长（秒）。</li>
+<li><strong>controller_manager_reconcile_count</strong>: 控制器管理器的重新调度次数。</li>
+</ul>
+<h3 id="5-网络和负载">5. <strong>网络和负载</strong></h3>
+<ul>
+<li><strong>kube_service_info</strong>: Kubernetes服务的元数据。</li>
+<li><strong>kube_endpoint_address_count</strong>: 服务的地址数。</li>
+<li><strong>kube_service_spec_type</strong>: 服务类型（ClusterIP、NodePort、LoadBalancer等）。</li>
+</ul>
+<h3 id="6-存储">6. <strong>存储</strong></h3>
+<ul>
+<li><strong>kube_persistentvolumeclaim_resource_requests_storage_bytes</strong>: 持久卷声明请求的存储空间（字节）。</li>
+<li><strong>kube_persistentvolumeclaim_resource_requests_storage_bytes</strong>: 持久卷声明实际使用的存储空间（字节）。</li>
+<li><strong>kube_persistentvolume_status_phase</strong>: 持久卷的状态（Available、Bound、Released、Failed）。</li>
+</ul>
+<h2 id="redis-相关指标">Redis 相关指标</h2>
+<h3 id="1-资源使用">1. 资源使用</h3>
+<ul>
+<li>
+<p><strong>used_cpu_sys</strong>: Redis进程在系统中使用的CPU时间（秒）。</p>
+</li>
+<li>
+<p><strong>used_cpu_user</strong>: Redis进程在用户空间中使用的CPU时间（秒）。</p>
+</li>
+<li>
+<p><strong>used_cpu_sys_children</strong>: 所有子进程在系统中使用的CPU时间（秒）。</p>
+</li>
+<li>
+<p><strong>used_cpu_user_children</strong>: 所有子进程在用户空间中使用的CPU时间（秒）。</p>
+</li>
+<li>
+<p><strong>used_memory_rss</strong>: 操作系统分配给Redis进程的内存量（RSS）。</p>
+</li>
+<li>
+<p><strong>used_memory_peak</strong>: Redis实例的最大内存使用量（字节）。</p>
+</li>
+<li>
+<p><strong>maxmemory</strong>: Redis配置的最大内存限制（字节）。</p>
+</li>
+<li>
+<p><strong>mem_fragmentation_ratio</strong>: 内存碎片率。计算为<code dir="auto">used_memory_rss / used_memory</code>，用于指示内存的浪费情况。</p>
+</li>
+<li>
+<p><strong>used_memory</strong>: Redis实例已使用的内存总量（字节）。</p>
+</li>
+</ul>
+<h3 id="2-键值操作">2. <strong>键值操作</strong></h3>
+<ul>
+<li><strong>total_connections_received</strong>: Redis接收到的总连接数。</li>
+<li><strong>total_commands_processed</strong>: Redis处理的命令总数。</li>
+<li><strong>keyspace_hits</strong>: 查询缓存命中的次数。</li>
+<li><strong>keyspace_misses</strong>: 查询缓存未命中的次数。</li>
+<li><strong>evicted_keys</strong>: 被驱逐的键数（由于内存限制）。</li>
+<li><strong>expired_keys</strong>: 过期的键数。</li>
+<li><strong>persistent_connections</strong>: 持久连接数。</li>
+</ul>
+<h3 id="3-持久化">3. <strong>持久化</strong></h3>
+<ul>
+<li><strong>rdb_changes_since_last_save</strong>: 上次RDB持久化以来的键变更数量。</li>
+<li><strong>rdb_last_bgsave_status</strong>: 上次RDB保存操作的状态（OK或ERROR）。</li>
+<li><strong>rdb_last_save_time</strong>: 上次RDB持久化的时间戳。</li>
+<li><strong>aof_current_size</strong>: AOF文件的当前大小（字节）。</li>
+<li><strong>aof_last_bgrewrite_status</strong>: 上次AOF重写的状态。</li>
+<li><strong>aof_last_write_status</strong>: 上次AOF写操作的状态。</li>
+</ul>
+<h3 id="4-集群和复制">4. <strong>集群和复制</strong></h3>
+<ul>
+<li><strong>role</strong>: Redis实例的角色（master/slave）。</li>
+<li><strong>connected_slaves</strong>: 当前连接的从节点数。</li>
+<li><strong>master_last_io_seconds_ago</strong>: 主节点与从节点的最后交互时间（秒）。</li>
+<li><strong>replication_backlog_active</strong>: 是否启用复制积压日志（1表示启用，0表示禁用）。</li>
+</ul>
+<h3 id="5-网络">5. <strong>网络</strong></h3>
+<ul>
+<li><strong>total_net_input_bytes</strong>: Redis接收到的总字节数。</li>
+<li><strong>total_net_output_bytes</strong>: Redis发送的总字节数。</li>
+<li><strong>blocked_clients</strong>: 当前被阻塞的客户端数。</li>
+</ul>
+<h3 id="6-慢查询">6. <strong>慢查询</strong></h3>
+<ul>
+<li><strong>slowlog_len</strong>: Redis慢查询日志中的条目数。</li>
+<li><strong>slowlog_get (N)</strong>: 获取N条慢查询日志记录。</li>
+</ul>
+<h2 id="mysql-相关指标">MySQL 相关指标</h2>
+<h3 id="1-资源使用-1">1. <strong>资源使用</strong></h3>
+<ul>
+<li><strong><code dir="auto">Cpu_usage</code></strong>: CPU的使用率。</li>
+<li><strong><code dir="auto">Memory_usage</code></strong>: 内存的使用率。</li>
+<li><strong><code dir="auto">Disk_space_usage</code></strong>: 磁盘的使用情况。</li>
+</ul>
+<h3 id="2-连接数">2. <strong>连接数</strong></h3>
+<ul>
+<li><strong><code dir="auto">Threads_connected</code></strong>: 当前连接的线程数。</li>
+<li><strong><code dir="auto">Threads_running</code></strong>: 当前处于运行状态的线程数。</li>
+<li><strong><code dir="auto">Threads_created</code></strong>: 自启动以来创建的线程数。</li>
+<li><strong><code dir="auto">Max_used_connections</code></strong>: MySQL历史上最大并发连接数。</li>
+<li><strong><code dir="auto">Aborted_connects</code></strong>: 尝试连接但失败的次数。</li>
+</ul>
+<h3 id="3-查询性能">3. <strong>查询性能</strong></h3>
+<ul>
+<li><strong><code dir="auto">Queries</code></strong>: 每秒查询数。</li>
+<li><strong><code dir="auto">Slow_queries</code></strong>: 慢查询的数量。</li>
+<li><strong><code dir="auto">Select_full_join</code></strong>: 执行全表连接的查询数。</li>
+<li><strong><code dir="auto">Select_range_check</code></strong>: 使用范围查询的次数。</li>
+<li><strong><code dir="auto">Sort_merge_passes</code></strong>: 执行排序时需要的合并操作数。</li>
+<li><strong><code dir="auto">Com_select</code>, <code dir="auto">Com_insert</code>, <code dir="auto">Com_update</code>, <code dir="auto">Com_delete</code></strong>: 分别表示SELECT、INSERT、UPDATE、DELETE命令的执行次数。</li>
+</ul>
+<h3 id="4-缓存相关指标">4. <strong>缓存相关指标</strong></h3>
+<ul>
+<li><strong><code dir="auto">Key_read_requests</code></strong>: 从缓存中读取的请求数。</li>
+<li><strong><code dir="auto">Key_reads</code></strong>: 从磁盘读取的键数。</li>
+<li><strong><code dir="auto">Key_write_requests</code></strong>: 向缓存中写入的请求数。</li>
+<li><strong><code dir="auto">Key_writes</code></strong>: 写入缓存的键数。</li>
+<li><strong><code dir="auto">InnoDB_buffer_pool_reads</code></strong>: 从InnoDB缓存池读取的次数。</li>
+<li><strong><code dir="auto">InnoDB_buffer_pool_pages_dirty</code></strong>: 缓存池中脏页的数量。</li>
+</ul>
+<h3 id="5-复制相关指标">5. <strong>复制相关指标</strong></h3>
+<ul>
+<li><strong><code dir="auto">Seconds_Behind_Master</code></strong>: 从服务器与主服务器的延迟时间（秒）。</li>
+<li><strong><code dir="auto">Slave_IO_Running</code></strong>: 复制IO线程的状态。</li>
+<li><strong><code dir="auto">Slave_SQL_Running</code></strong>: 复制SQL线程的状态。</li>
+</ul>
+<h3 id="6-innodb">6. <strong>InnoDB</strong></h3>
+<ul>
+<li><strong><code dir="auto">Innodb_buffer_pool_size</code></strong>: InnoDB缓冲池的大小。</li>
+<li><strong><code dir="auto">Innodb_buffer_pool_free</code></strong>: 缓冲池中未使用的空间。</li>
+<li><strong><code dir="auto">Innodb_buffer_pool_wait_free</code></strong>: 等待可用内存的次数。</li>
+<li><strong><code dir="auto">Innodb_row_lock_current_waits</code></strong>: 当前等待行锁的次数。</li>
+</ul>
+<h2 id="minio-相关指标">MinIO 相关指标</h2>
+<h3 id="1-资源使用-2">1. <strong>资源使用</strong></h3>
+<ul>
+<li><strong><code dir="auto">minio_memory_used_bytes</code></strong>: 当前内存使用量（字节数）。</li>
+<li><strong><code dir="auto">minio_cpu_usage</code></strong>: CPU使用率。</li>
+<li><strong><code dir="auto">minio_cpu_load</code></strong>: CPU负载（1分钟、5分钟、15分钟平均负载</li>
+</ul>
+<h3 id="2-请求和吞吐量">2. <strong>请求和吞吐量</strong></h3>
+<ul>
+<li><strong><code dir="auto">minio_api_requests_total</code></strong>: API 请求的总数。</li>
+<li><strong><code dir="auto">minio_api_request_duration_seconds</code></strong>: API 请求的响应时间（秒）。</li>
+<li><strong><code dir="auto">minio_api_requests_rate</code></strong>: API 请求速率（每秒请求数）。</li>
+<li><strong><code dir="auto">minio_api_errors_total</code></strong>: API 请求中的错误总数。</li>
+<li><strong><code dir="auto">minio_api_success_total</code></strong>: 成功处理的 API 请求总数。</li>
+<li><strong><code dir="auto">minio_api_latency_seconds</code></strong>: API 请求的延迟时间（秒）。</li>
+</ul>
+<h3 id="3-网络">3. <strong>网络</strong></h3>
+<ul>
+<li><strong><code dir="auto">minio_network_received_bytes_total</code></strong>: 从客户端接收的总字节数。</li>
+<li><strong><code dir="auto">minio_network_sent_bytes_total</code></strong>: 向客户端发送的总字节数。</li>
+<li><strong><code dir="auto">minio_network_error_total</code></strong>: 网络错误的总数。</li>
+<li><strong><code dir="auto">minio_network_requests_total</code></strong>: 网络请求总数。</li>
+</ul>
+<h3 id="4-错误和异常">4. <strong>错误和异常</strong></h3>
+<ul>
+<li><strong><code dir="auto">minio_errors_total</code></strong>: 总的错误次数。</li>
+<li><strong><code dir="auto">minio_error_rate</code></strong>: 错误率（每秒发生的错误数）。</li>
+<li><strong><code dir="auto">minio_object_errs</code></strong>: 对象存储中的错误数量。</li>
+<li><strong><code dir="auto">minio_request_errs</code></strong>: API 请求中的错误数量。</li>
+</ul>
+<h3 id="5-健康和状态">5. <strong>健康和状态</strong></h3>
+<ul>
+<li>
+<p><strong><code dir="auto">minio_health_check</code></strong>: MinIO实例的健康检查状态。</p>
+</li>
+<li>
+<p><strong><code dir="auto">minio_uptime_seconds</code></strong>: MinIO实例的运行时间（秒）。</p>
+</li>
+<li>
+<p><strong><code dir="auto">minio_heartbeat</code></strong>: 用于检测节点心跳的状态。</p>
+</li>
+<li>
+<p><strong><code dir="auto">minio_watchdog_timeouts</code></strong>: 监控超时的次数。</p>
+</li>
+<li>
+<p><strong><code dir="auto">minio_cluster_health</code></strong>: MinIO集群的健康状况（用于集群部署）。</p>
+</li>
+<li>
+<p><strong><code dir="auto">minio_cluster_nodes</code></strong>: 集群中可用节点的数量。</p>
+</li>
+</ul> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links astro-u2l5gyhi" dir="ltr"> <a href="/monitoring/01_monitoring/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg>  <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">监控系统</span> </span> </a> <a href="/monitoring/03_logging/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg>  <span class="astro-u2l5gyhi"> Next <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">日志系统</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
